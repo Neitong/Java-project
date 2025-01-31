@@ -59,6 +59,8 @@ public class auth {
             } else {
                 System.out.println("Invalid username or password.");
             }
+
+        input.close();
             
        
         
