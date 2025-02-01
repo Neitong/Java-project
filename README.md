@@ -28,4 +28,4 @@ This is a **Java-based Online Shopping Platform** that allows users to browse pr
 ## Setup Instructions
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/Neitong/Java-project.git
