@@ -9,3 +9,4 @@ class Product {
         this.price = price;
         this.quantity = quantity;
     }
+}
