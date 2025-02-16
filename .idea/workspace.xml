@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Control/TrackProducts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/Control/List of ManageProduct" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Draw.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Java-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Java-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addtocart/addtocart.java" beforeDir="false" afterPath="$PROJECT_DIR$/addtocart/addtocart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/ManageProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/ManageProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/StockProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/StockProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Stock.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,7 @@
         <option value="OpenRewrite Recipe" />
         <option value="package.json" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -45,6 +51,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2s7jxF7F8ubJMDpR4rzTZV9JrL0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -54,6 +63,7 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Application.AdminInterface.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Admin&quot;,
@@ -66,10 +76,10 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/Java-project/authentication/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -99,20 +109,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="My project" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="sun.jvm.hotspot.ui.AnnotatedMemoryPanel" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="Java-project" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.My project" />
+      <item itemvalue="Application.test" />
       <item itemvalue="Application.AdminInterface" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminInterface" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -169,15 +182,6 @@
           <url>file://$PROJECT_DIR$/authentication/src/Main.java</url>
           <line>11</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/Admin/Control/AdminInterface.java</url>
-          <line>4</line>
-          <properties class="Admin.Control.AdminInterface" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

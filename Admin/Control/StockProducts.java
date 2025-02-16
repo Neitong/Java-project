@@ -7,16 +7,22 @@ public class StockProducts{
     private double price;
     private int quantity;
     private String productType;
+    private String brand;
+    private String ProductColor;
+    private int warranty;
 
 
 
-    public StockProducts(int id, String name,String model, double price, int quantity, String productType){
+    public StockProducts(int id, String name,String model, double price, int quantity, String productType,String brand,String ProductColor,int warranty){
         this.id = id;
         this.name = name;
         this.model= model;
         this.price = price;
         this.quantity = quantity;
         this.productType= productType;
+        this.warranty= warranty;
+        this.brand= brand;
+        this.ProductColor= ProductColor;
     }
 
     public String getName(){
@@ -26,6 +32,21 @@ public class StockProducts{
     public void setName(String name){
         this.name= name;
     }
+    public String getBrand(){
+        return brand;
+    }
+
+    public void setBrand(String Brand){
+        this.brand= Brand;
+    }
+    public String getProductColor(){
+        return ProductColor;
+    }
+
+    public void setProductColor(String productColor){
+        this.ProductColor= ProductColor;
+    }
+
     public String getModel(){
         return model;
     }
@@ -40,6 +61,13 @@ public class StockProducts{
 
     public void setId(int id){
         this.id= id;
+    }
+    public int getWarranty(){
+        return warranty;
+    }
+
+    public void setWarranty(int warranty){
+        this.warranty= warranty;
     }
 
     public int getQuantity(){

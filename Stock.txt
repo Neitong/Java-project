@@ -1,6 +1,306 @@
 1
-MSI
-ZYPERUS
-1500.0
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
 2
-laptop
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+3
+Sony WH-1000XM4
+WHXM4
+350.0
+20
+Headphone
+Sony
+Silver
+2
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+3
+Sony WH-1000XM4
+WHXM4
+350.0
+20
+Headphone
+Sony
+Silver
+2
+4
+Anker PowerPort
+A2123
+30.0
+25
+Charger
+Anker
+White
+1
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+3
+Sony WH-1000XM4
+WHXM4
+350.0
+20
+Headphone
+Sony
+Silver
+2
+4
+Anker PowerPort
+A2123
+30.0
+25
+Charger
+Anker
+White
+1
+5
+Baseus Quick Charger
+BSC-QC3.0
+20.0
+30
+Adaptor
+Baseus
+Black
+1
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+3
+Sony WH-1000XM4
+WHXM4
+350.0
+20
+Headphone
+Sony
+Silver
+2
+4
+Anker PowerPort
+A2123
+30.0
+25
+Charger
+Anker
+White
+1
+5
+Baseus Quick Charger
+BSC-QC3.0
+20.0
+30
+Adaptor
+Baseus
+Black
+1
+6
+Logitech G733
+Lightspeed
+200.0
+12
+Headset
+Logitech
+White
+2
+1
+Dell Inspiron 15
+3511
+550.0
+10
+Laptop
+Dell
+Black
+2
+2
+iPhone 13
+A2633
+800.0
+15
+Phone
+Apple
+Blue
+1
+3
+Sony WH-1000XM4
+WHXM4
+350.0
+20
+Headphone
+Sony
+Silver
+2
+4
+Anker PowerPort
+A2123
+30.0
+25
+Charger
+Anker
+White
+1
+5
+Baseus Quick Charger
+BSC-QC3.0
+20.0
+30
+Adaptor
+Baseus
+Black
+1
+6
+Logitech G733
+Lightspeed
+200.0
+12
+Headset
+Logitech
+White
+2
+7
+JBL Flip 5
+FLIP5
+120.0
+18
+Speaker
+JBL
+Red
+1
+8
+Razer BlackWidow V3
+BW-V3
+150.0
+10
+Keyboard
+Razer
+Green
+2
+8
+Razer BlackWidow V3
+BW-V3
+150.0
+10
+Keyboard
+Razer
+Green
+2
+9
+Logitech MX Master 3
+MX3
+100.0
+20
+Mouse
+Logitech
+Gray
+1
+8
+Razer BlackWidow V3
+BW-V3
+150.0
+10
+Keyboard
+Razer
+Green
+2
+9
+Logitech MX Master 3
+MX3
+100.0
+20
+Mouse
+Logitech
+Gray
+1
+10
+SteelSeries QcK+
+QcK+
+25.0
+50
+MousePad
+SteelSeries
+Black
+0
