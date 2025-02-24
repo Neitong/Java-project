@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth/src/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth/test/Tests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addtocart/CartHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addtocart/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addtocart/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addtocart/addtocart.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,27 +19,29 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="OpenRewrite Recipe" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Neitong"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Neitong&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Neitong/Java-project.git",
-    "accountId": "ae79146e-eb02-4d7d-98a4-166c41926daa"
+    "accountId": "041a4494-e330-4e36-a87b-44b51512230f"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2s7jxF7F8ubJMDpR4rzTZV9JrL0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,20 +50,28 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "checkout",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Theara/Documents/GitHub/Java-project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/IdeaProjects/Java-project/auth/src/Main.java",
+    "onboarding.tips.debug.path": "D:/IdeaProjects/Java-project/authentication/src/Main.java",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -79,8 +91,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.24807.4" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.24807.4" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
       </set>
     </attachedChunks>
   </component>
@@ -93,6 +105,9 @@
       <option name="presentableId" value="Default" />
       <updated>1737813753337</updated>
       <workItem from="1737813754540" duration="1570000" />
+      <workItem from="1738346406087" duration="399000" />
+      <workItem from="1738346959122" duration="1896000" />
+      <workItem from="1739796362744" duration="1784000" />
     </task>
     <servers />
   </component>
@@ -129,6 +144,11 @@
           <url>file://$PROJECT_DIR$/src/src/Main.java</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/authentication/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
