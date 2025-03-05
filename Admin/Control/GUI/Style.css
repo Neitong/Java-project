@@ -1,0 +1,132 @@
+.leave{
+    -fx-cursor: hand;
+}
+.leave:hover{
+    -fx-opacity: 0.5;
+}
+.scrollLayout{
+    -fx-padding: 10px;
+}
+.AboutText{
+    -fx-font-weight: bold;
+    -fx-font-size: 35px;
+}
+.AboutSmallText{
+    -fx-font-size: 17px;
+    -fx-text-fill: white;
+}
+.ControlText{
+    -fx-padding: 10px;
+    -fx-background-color: #2c2c85;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+.ControlText:hover{
+    -fx-background-color: #dc3850;
+}
+.AboutPage{
+    -fx-background-radius: 8px;
+    -fx-background-color: white;
+}
+.listItems{
+    -fx-background-color: #bcb5b5;
+    -fx-background-radius: 5px;
+}
+.input{
+    -fx-padding: 15px;
+    -fx-font-size: 15px;
+    -fx-text-fill: black;
+}
+.search{
+    -fx-background-color:  blue;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+.search:hover{
+    -fx-background-color: #7777f3;
+}
+.MainOldData{
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
+}
+.MainNewData{
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+}
+.data{
+    -fx-font-weight: bold;
+}
+.oldData,.newData{
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+}
+.submit{
+    -fx-background-color: blue;
+    -fx-background-radius: 6px;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.searchBlock{
+    -fx-padding: 30px;
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+}
+.submit:hover{
+    -fx-background-color: #6e6ef1;
+}
+.menuBar{
+    -fx-background-color:  #2D2D33;
+    -fx-cursor: hand;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.menuBar:hover{
+    -fx-background-color:  #51515F;
+}
+.menuActive{
+    -fx-background-color:  #51515F;
+    -fx-cursor: hand;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.btn{
+    -fx-background-color:  white;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+.btn:hover{
+    -fx-background-color:  #FC5E5E;
+    -fx-text-fill: white;
+}
+.btn:hover .number{
+    -fx-text-fill: white;
+}
+.btnActive{
+    -fx-background-color:  #FC5E5E;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+.white-background{
+    -fx-background-color: white;
+}
+.gray-background{
+    -fx-background-color: #edeaea;
+}
+.black-background{
+    -fx-background-color: #454343;
+}
+.red{
+    -fx-background-color: black;
+    -fx-border-radius: 50%;
+    -fx-arc-width: 100px;
+    --block-line-height: 100px;
+}
+.nameAdmin{
+    -fx-font-weight: bold;
+}

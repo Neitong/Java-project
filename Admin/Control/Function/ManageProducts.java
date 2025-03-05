@@ -1,4 +1,5 @@
-package Admin.Control;
+package Admin.Control.Function;
+
 import java.io.File;
 import  java.util.Scanner;
 import java.util.ArrayList;
@@ -7,102 +8,55 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 
+
 public class ManageProducts{
 
-    public void AddProduct(){
+    public static void AddProduct(TemporaryStock tempStock) {
+        ArrayList<StockProducts> productsList = new ArrayList<>();
 
-        ArrayList<StockProducts> productsList= new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
-        Scanner obj= new Scanner(System.in);
+        try (FileWriter file = new FileWriter("Stock.txt", true)) {
 
-        try(FileWriter file = new FileWriter("Stock.txt", true)){
-            while(true){
+            StockProducts products = new StockProducts(tempStock.id, tempStock.name, tempStock.model,
+                    tempStock.price, tempStock.quantity, tempStock.productType,
+                    tempStock.brand, tempStock.ProductColor, tempStock.warranty);
 
-                System.out.print("Product ID:");
-                tempStock.id= obj.nextInt();
-                obj.nextLine();
+            productsList.add(products);
 
-                System.out.print("Product Name:");
-                tempStock.name= obj.nextLine();
-
-                System.out.print("Product Model:");
-                tempStock.model= obj.nextLine();
-
-                System.out.print("Product Price:");
-                tempStock.price= obj.nextInt();
-                obj.nextLine();
-
-                System.out.print("Product Quantity:");
-                tempStock.quantity= obj.nextInt();
-                obj.nextLine();
-
-                System.out.print("Product Type:");
-                tempStock.productType= obj.nextLine();
-
-                System.out.print("Product Brand:");
-                tempStock.brand= obj.nextLine();
-
-                System.out.print("Product Color:");
-                tempStock.ProductColor= obj.nextLine();
-
-                System.out.print("Product Warranty:");
-                tempStock.warranty= obj.nextInt();
-                obj.nextLine();
-
-                //It put value back to constructor to specifies all the parameter
-                StockProducts products = new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty);
-                productsList.add(products);
-                //It stores obj of product to store in ArrayList one by one
-
-
-                //It read one obj by one obj that productList has and point it to product to store it temporily
-                for(StockProducts product : productsList){
-                    file.write(product.getId()             + "\n");
-                    file.write(product.getName()           + "\n");
-                    file.write(product.getModel()          + "\n");
-                    file.write(product.getPrice()          + "\n");
-                    file.write(product.getQuantity()       + "\n");
-                    file.write(product.getProductType()    + "\n");
-                    file.write(product.getBrand()          + "\n");
-                    file.write(product.getProductColor()   + "\n");
-                    file.write(product.getWarranty()       + "\n");
-                }
-
-                System.out.println("That all of product you want to add ?  (Y|N):");
-                char choice= obj.nextLine().charAt(0);
-
-                if(choice=='Y' || choice== 'y'){
-                    break;
-                }
+            for (StockProducts product : productsList) {
+                file.write(product.getId() + "\n");
+                file.write(product.getName() + "\n");
+                file.write(product.getModel() + "\n");
+                file.write(product.getPrice() + "\n");
+                file.write(product.getQuantity() + "\n");
+                file.write(product.getProductType() + "\n");
+                file.write(product.getBrand() + "\n");
+                file.write(product.getProductColor() + "\n");
+                file.write(product.getWarranty() + "\n");
             }
-        }catch (IOException e){
-            System.out.println("No such a file");
-        }
 
+            System.out.println("Product added successfully!");
+
+        } catch (IOException e) {
+            System.out.println("No such file");
+        }
     }
 
-    public void UpdateProduct(){
+
+
+    public static void UpdateProduct(TemporaryStock updatedProduct) {
 
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
         boolean productFound=false;
         Scanner obj= new Scanner(System.in);
-        int product_id;
-        System.out.print("Enter product ID: ");
-        product_id= obj.nextInt();
-        obj.nextLine();
 
         try {
             File file = new File("Stock.txt");
             Scanner fileReader = new Scanner(file);
 
-            // Loop through file until it do not have any obj
 
             while (fileReader.hasNextLine()) {
 
-                // just get data from file and convert it to specific variables and data we have created
-                // string => int, double...
-
+                TemporaryStock tempStock = new TemporaryStock();
                 tempStock.id= Integer.parseInt(fileReader.nextLine());
                 tempStock.name= fileReader.nextLine();
                 tempStock.model= fileReader.nextLine();
@@ -115,81 +69,49 @@ public class ManageProducts{
 
 
                 // Find product id to match each other and give option to update products info
-                if(tempStock.id == product_id){
-                    productFound= true;
-                    System.out.println("Current Product Details:");
-                    System.out.println("---------------------------------");
-                    System.out.println("Product ID          : " + tempStock.id);
-                    System.out.println("Product Name        : " + tempStock.name);
-                    System.out.println("Product Model       : " + tempStock.model);
-                    System.out.println("Product Price       : " + tempStock.price + " $");
-                    System.out.println("Product Quantity    : " + tempStock.quantity);
-                    System.out.println("Product Type        : " + tempStock.productType);
-                    System.out.println("Product Brand       : " + tempStock.brand);
-                    System.out.println("Product Color       : " + tempStock.ProductColor);
-                    System.out.println("Product Warranty    : " + tempStock.warranty + "  Year");
-                    System.out.println("---------------------------------");
-
-                    System.out.print("Enter new Product Name        : ");
-                    tempStock.name= obj.nextLine();
-                    System.out.print("Enter new Product Model       : ");
-                    tempStock.model = obj.nextLine();
-                    System.out.print("Enter new Product Price       : ");
-                    tempStock.price = Double.parseDouble(obj.nextLine());
-                    System.out.print("Enter new Product Quantity    : ");
-                    tempStock.quantity = obj.nextInt();
-                    obj.nextLine();
-                    System.out.print("Enter new Product Type        : ");
-                    tempStock.productType = obj.nextLine();
-                    System.out.print("Enter new Product Brand       : ");
-                    tempStock.brand = obj.nextLine();
-                    System.out.print("Enter new Product Color       : ");
-                    tempStock.ProductColor = obj.nextLine();
-                    System.out.print("Enter new Product Warranty    : ");
-                    tempStock.warranty = obj.nextInt();
+                if(tempStock.id == updatedProduct.id) {
+                    productsList.add(new StockProducts(updatedProduct.id, updatedProduct.name, updatedProduct.model, updatedProduct.price, updatedProduct.quantity, updatedProduct.productType, updatedProduct.brand, updatedProduct.ProductColor, updatedProduct.warranty));
+                }else {
+                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
                 }
-                //After user completed, assign it to constructor again which input them to file
-                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
             }
-                fileReader.close();
-                if(productFound){
-                    try (FileWriter fileWriter = new FileWriter("Stock.txt", false)) {
-                        for (StockProducts product : productsList) {
-                            fileWriter.write(product.getId()            + "\n");
-                            fileWriter.write(product.getName()          + "\n");
-                            fileWriter.write(product.getModel()         + "\n");
-                            fileWriter.write(product.getPrice()         + "\n");
-                            fileWriter.write(product.getQuantity()      + "\n");
-                            fileWriter.write(product.getProductType()   + "\n");
-                            fileWriter.write(product.getBrand()         + "\n");
-                            fileWriter.write(product.getProductColor()  + "\n");
-                            fileWriter.write(product.getWarranty()      + "\n");
-                        }
-                    }
-                    System.out.println("Product updated successfully.");
-                }else{
-                    System.out.println("Product with ID " + product_id + " not found.");
+            fileReader.close();
+            try (FileWriter fileWriter = new FileWriter("Stock.txt", false)) {
+                for (StockProducts product : productsList) {
+                    fileWriter.write(product.getId()            + "\n");
+                    fileWriter.write(product.getName()          + "\n");
+                    fileWriter.write(product.getModel()         + "\n");
+                    fileWriter.write(product.getPrice()         + "\n");
+                    fileWriter.write(product.getQuantity()      + "\n");
+                    fileWriter.write(product.getProductType()   + "\n");
+                    fileWriter.write(product.getBrand()         + "\n");
+                    fileWriter.write(product.getProductColor()  + "\n");
+                    fileWriter.write(product.getWarranty()      + "\n");
                 }
-
+            }
         } catch (IOException e) {
             System.out.println("The file is last dance");
         }
     }
-    public void DeleteProduct(){
-        ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock = new TemporaryStock();
-        boolean productFound = false;
-        Scanner obj = new Scanner(System.in);
 
-        System.out.print("Enter product ID to delete: ");
-        int product_id = obj.nextInt();
-        obj.nextLine();
+
+
+
+
+    //not fix yet
+    public static void DeleteProduct(int IdSearch) {
+        ArrayList<StockProducts> productsList = new ArrayList<>();
+        boolean productFound = false;
+
 
         try{
             File file = new File("Stock.txt");
             Scanner fileReader = new Scanner(file);
 
             while (fileReader.hasNextLine()) {
+
+                TemporaryStock tempStock = new TemporaryStock();
+
                 tempStock.id = Integer.parseInt(fileReader.nextLine());
                 tempStock.name = fileReader.nextLine();
                 tempStock.model = fileReader.nextLine();
@@ -200,13 +122,11 @@ public class ManageProducts{
                 tempStock.ProductColor = fileReader.nextLine();
                 tempStock.warranty = Integer.parseInt(fileReader.nextLine());
 
-                if (tempStock.id == product_id) {
+                if (tempStock.id == IdSearch) {
                     productFound = true;
-                    System.out.println("This product gonna disappear now !!!");
                     continue;
                 }
                 productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
-
             }
             fileReader.close();
             if (productFound) {
@@ -225,32 +145,23 @@ public class ManageProducts{
 
                     }
                 }
-                System.out.println("This Product finally deleted successfully.");
-            } else {
-                System.out.println("Product with ID " + product_id + " not found.");
             }
-
         }catch(IOException e){
             System.out.println("The file is last dance");
         }
     }
-    public void SearchProduct(){
+
+
+    public static ArrayList<StockProducts> SearchProduct(int IDSearch) {
+
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
-        boolean productFound=false;
-        Scanner obj= new Scanner(System.in);
-        int product_id;
-        System.out.print("Enter product ID: ");
-        product_id= obj.nextInt();
-        obj.nextLine();
 
         try {
             File file = new File("Stock.txt");
             Scanner fileReader = new Scanner(file);
 
-            // Loop through the file line by line
-            while (fileReader.hasNextLine()) {
-
+            while(fileReader.hasNextLine()){
+                TemporaryStock tempStock = new TemporaryStock();
                 tempStock.id= Integer.parseInt(fileReader.nextLine());
                 tempStock.name= fileReader.nextLine();
                 tempStock.model= fileReader.nextLine();
@@ -262,22 +173,8 @@ public class ManageProducts{
                 tempStock.warranty= Integer.parseInt(fileReader.nextLine());
 
 
-                if (tempStock.id== product_id) {
-                    System.out.println("-----------------------------");
-                    System.out.println("Product ID              : " + tempStock.id);
-                    System.out.println("Product Name            : " + tempStock.name);
-                    System.out.println("Product Model           : " + tempStock.model);
-                    System.out.println("Product Price           : " + tempStock.price + " $");
-                    System.out.println("Product Quantity        : " + tempStock.quantity);
-                    System.out.println("Product Type            : " + tempStock.productType);
-                    System.out.println("Product Brand           : " + tempStock.brand);
-                    System.out.println("Product Color           : " + tempStock.ProductColor);
-                    System.out.println("Product Warranty        : " + tempStock.warranty + "  Year");
-                    System.out.println("-----------------------------");
-                    break;
-                }else{
-                    System.out.println("THis product Id is not found !!");
-                    break;
+                if (IDSearch ==tempStock.id) {
+                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
                 }
             }
             fileReader.close();
@@ -285,10 +182,11 @@ public class ManageProducts{
         } catch (IOException e) {
             System.out.println("The file is last dance");
         }
+        return productsList;
     }
+
+
     public void SortProduct(){
-        ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
         Scanner obj= new Scanner(System.in);
         System.out.println("1. Sort Product by ID");
         System.out.println("2. Sort Product by price");
@@ -316,12 +214,12 @@ public class ManageProducts{
         }
 
     }
-    public void UpdateAmountProduct(){
 
-    }
 
-    //IT read data from file by one obj by one obj and go thorugh all of it one by one...
-    public void DisplayProduct(){
+
+
+
+    public static void DisplayProduct(TemporaryStock displayProduct){
         TemporaryStock tempStock= new TemporaryStock();
         try{
             File file = new File("Stock.txt");
@@ -335,37 +233,27 @@ public class ManageProducts{
             }
 
             while(fileReader.hasNextLine()){
+                displayProduct.id= Integer.parseInt(fileReader.nextLine());
+                displayProduct.name= fileReader.nextLine();
+                displayProduct.model= fileReader.nextLine();
+                displayProduct.price= Double.parseDouble(fileReader.nextLine());
+                displayProduct.quantity= Integer.parseInt(fileReader.nextLine());
+                displayProduct.productType= fileReader.nextLine();
+                displayProduct.brand= fileReader.nextLine();
+                displayProduct.ProductColor= fileReader.nextLine();
+                displayProduct.warranty= Integer.parseInt(fileReader.nextLine());
 
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
-
-
-
-                // Display the product details
-                System.out.println("---------------------------------");
-                System.out.println("Product ID              : " + tempStock.id);
-                System.out.println("Product Name            : " + tempStock.name);
-                System.out.println("Product Model           : " + tempStock.model);
-                System.out.println("Product Price           : " + tempStock.price + " $");
-                System.out.println("Product Quantity        : " + tempStock.quantity);
-                System.out.println("Product Type            : " + tempStock.productType);
-                System.out.println("Product Brand           : " + tempStock.brand);
-                System.out.println("Product Color           : " + tempStock.ProductColor);
-                System.out.println("Product Warranty        : " + tempStock.warranty + "  Year");
-                System.out.println("---------------------------------");
             }
             fileReader.close();
         }catch (IOException e){
             System.out.println("File not found !");
         }
     }
+
+
+
+
+
     public void SortByPrice(){
         Scanner obj= new Scanner(System.in);
         int choice;
@@ -385,10 +273,13 @@ public class ManageProducts{
                 System.out.println("Invalid choice ");
         }
     }
+
+
+
+
     public void Ascending(){
         ArrayList<StockProducts> productsList = new ArrayList<>();
         TemporaryStock tempStock= new TemporaryStock();
-        Scanner obj= new Scanner(System.in);
         try{
             File file = new File("Stock.txt");
             Scanner fileReader = new Scanner(file);
@@ -447,10 +338,13 @@ public class ManageProducts{
         }
 
     }
+
+
+
+
     public void Descending(){
         ArrayList<StockProducts> productsList = new ArrayList<>();
         TemporaryStock tempStock= new TemporaryStock();
-        Scanner obj= new Scanner(System.in);
 
         try{
             File file = new File("Stock.txt");
@@ -511,6 +405,10 @@ public class ManageProducts{
             System.out.println("File not found !");
         }
     }
+
+
+
+
     public void SortByID(){
         ArrayList<StockProducts> productsList = new ArrayList<>();
         TemporaryStock tempStock= new TemporaryStock();
@@ -579,6 +477,7 @@ public class ManageProducts{
     public void SortByProductType(){
         ArrayList<StockProducts> productsList = new ArrayList<>();
         TemporaryStock tempStock= new TemporaryStock();
+        boolean duplicateFound;
         Scanner obj= new Scanner(System.in);
         int choice;
         System.out.println("1 .  Sort By Laptop");
@@ -609,6 +508,7 @@ public class ManageProducts{
             default -> {
                 System.out.println("Invalid choice!");
                 yield null;
+                //if the choice is invalid (doesn't match any case), the method will return null as the value for productType.
             }
         };
         if (productType == null){
@@ -635,8 +535,14 @@ public class ManageProducts{
                 tempStock.ProductColor= fileReader.nextLine();
                 tempStock.warranty= Integer.parseInt(fileReader.nextLine());
 
+//                THe reason why I use id to check product also is that
+//                It prevent of duplicated product to sort many times
+//                By using this it will check the product id which search that the product id is already exist add
+//                To productList or not, if not it will add, but if it already exists, it will break
+
                 if (tempStock.productType.equalsIgnoreCase(productType)) {
-                    boolean duplicateFound = false;
+
+                    duplicateFound = false;
 
                     // Check for duplicate based on product ID
                     for (StockProducts product : productsList) {
@@ -672,20 +578,24 @@ public class ManageProducts{
         }
     }
 
+//    public void UpdateAmountProduct(){
+//
+//    }
+
 
     //    use to store data from user input and point back to constructor
     //    user to store data from file to show
 
-    static class TemporaryStock{
-        int id;
-        String name;
-        String model;
-        double price;
-        int quantity;
-        String productType;
-        int warranty;
-        String brand;
-        String ProductColor;
+    public static class TemporaryStock{
+        public int id;
+        public String name;
+        public String model;
+        public double price;
+        public int quantity;
+        public String productType;
+        public int warranty;
+        public String brand;
+        public String ProductColor;
     }
 }
 

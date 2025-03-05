@@ -1,4 +1,4 @@
-package Admin.Control;
+package Admin.Control.Function;
 
 public class StockProducts{
     private int id;
@@ -12,6 +12,18 @@ public class StockProducts{
     private int warranty;
 
 
+    //default constructor
+    public StockProducts(){
+        this.id = 0;
+        this.name = "";
+        this.model= "";
+        this.price = 0;
+        this.quantity = 0;
+        this.productType= "";
+        this.warranty= 0;
+        this.brand= "";
+        this.ProductColor= "";
+    }
 
     public StockProducts(int id, String name,String model, double price, int quantity, String productType,String brand,String ProductColor,int warranty){
         this.id = id;
