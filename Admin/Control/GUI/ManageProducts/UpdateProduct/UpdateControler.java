@@ -98,91 +98,91 @@ public class UpdateControler {
         }
     }
 
-    public void UpdateProduct(javafx.event.ActionEvent event) throws IOException {
-        if (NewProductID.getText().isEmpty() || NewProductName.getText().isEmpty()
-                || NewProductModel.getText().isEmpty() || NewProductPrice.getText().isEmpty()
-                || NewProductQuantity.getText().isEmpty() || NewProductType.getText().isEmpty()
-                || NewProductColor.getText().isEmpty() || NewProductBrand.getText().isEmpty()
-                || NewProductWarranty.getText().isEmpty()) {
-
-            successLabel.setText("Update Failed!!!");
-            return;
-        }
-        try{
-            ManageProducts.TemporaryStock updatedProduct = new ManageProducts.TemporaryStock();
-            updatedProduct.id = Integer.parseInt(NewProductID.getText());
-            updatedProduct.name = NewProductName.getText();
-            updatedProduct.model = NewProductModel.getText();
-            updatedProduct.price = Double.parseDouble(NewProductPrice.getText());
-            updatedProduct.quantity = Integer.parseInt(NewProductQuantity.getText());
-            updatedProduct.productType = NewProductType.getText();
-            updatedProduct.brand = NewProductBrand.getText();
-            updatedProduct.ProductColor = NewProductColor.getText();
-            updatedProduct.warranty = Integer.parseInt(NewProductWarranty.getText());
-            ManageProducts.UpdateProduct(updatedProduct);
-            successLabel.setStyle("-fx-text-fill: green;");
-            successLabel.setText("Update Successful!!!");
-
-            ClearNewProductInfo();
-
-        }catch (NumberFormatException e) {
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setText("Invalid input format!");
-        } catch (Exception e) {
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setText("Update Failed!!!");
-        }
-    }
-    public void searchProduct(javafx.event.ActionEvent event) throws IOException {
-
-        if (idSearch.getText().isEmpty()) {
-            successLabel.setText("No Product Found");
-            return;
-        }
-        try {
-            int IDSearch = Integer.parseInt(idSearch.getText());
-            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(IDSearch);
-
-            if(!foundProducts.isEmpty()){
-                StockProducts product = foundProducts.get(0);
-                HideBlock.setVisible(true);
-                HideBtn.setVisible(true);
-
-                oldProductID.setText("Product ID             :     " + product.getId());
-                oldProductName.setText("Product Name         :     " + product.getName());
-                oldProductModel.setText("Product Model       :     " + product.getModel());
-                oldProductPrice.setText("Product Price       :     " + product.getPrice());
-                oldProductQuantity.setText("Product Quantity :     " + product.getQuantity());
-                oldProductType.setText("Product Type         :     " + product.getProductType());
-                oldProductBrand.setText("Product Brand       :     " + product.getBrand());
-                oldProductColor.setText("Product Color       :     " + product.getProductColor());
-                oldProductWarranty.setText("Product Warranty :     " + product.getWarranty());
-
-                idSearch.clear();
-
-
-            }else{
-                HideBlock.setVisible(false);
-                HideBtn.setVisible(false);
-                successLabel.setStyle("-fx-text-fill: red;");
-                successLabel.setText("No Product Found");
-                clearOldProductInfo();
-            }
-
-        }catch (NumberFormatException e) {
-            HideBlock.setVisible(false);
-            HideBtn.setVisible(false);
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setText("Invalid Product ID");
-            clearOldProductInfo();
-        } catch (Exception e) {
-            HideBlock.setVisible(false);
-            HideBtn.setVisible(false);
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setText("Error occurred");
-            clearOldProductInfo();
-        }
-    }
+//    public void UpdateProduct(javafx.event.ActionEvent event) throws IOException {
+//        if (NewProductID.getText().isEmpty() || NewProductName.getText().isEmpty()
+//                || NewProductModel.getText().isEmpty() || NewProductPrice.getText().isEmpty()
+//                || NewProductQuantity.getText().isEmpty() || NewProductType.getText().isEmpty()
+//                || NewProductColor.getText().isEmpty() || NewProductBrand.getText().isEmpty()
+//                || NewProductWarranty.getText().isEmpty()) {
+//
+//            successLabel.setText("Update Failed!!!");
+//            return;
+//        }
+//        try{
+//            ManageProducts.TemporaryStock updatedProduct = new ManageProducts.TemporaryStock();
+//            updatedProduct.id = Integer.parseInt(NewProductID.getText());
+//            updatedProduct.name = NewProductName.getText();
+//            updatedProduct.model = NewProductModel.getText();
+//            updatedProduct.price = Double.parseDouble(NewProductPrice.getText());
+//            updatedProduct.quantity = Integer.parseInt(NewProductQuantity.getText());
+//            updatedProduct.productType = NewProductType.getText();
+//            updatedProduct.brand = NewProductBrand.getText();
+//            updatedProduct.ProductColor = NewProductColor.getText();
+//            updatedProduct.warranty = Integer.parseInt(NewProductWarranty.getText());
+//            ManageProducts.UpdateProduct(updatedProduct);
+//            successLabel.setStyle("-fx-text-fill: green;");
+//            successLabel.setText("Update Successful!!!");
+//
+//            ClearNewProductInfo();
+//
+//        }catch (NumberFormatException e) {
+//            successLabel.setStyle("-fx-text-fill: red;");
+//            successLabel.setText("Invalid input format!");
+//        } catch (Exception e) {
+//            successLabel.setStyle("-fx-text-fill: red;");
+//            successLabel.setText("Update Failed!!!");
+//        }
+//    }
+//    public void searchProduct(javafx.event.ActionEvent event) throws IOException {
+//
+//        if (idSearch.getText().isEmpty()) {
+//            successLabel.setText("No Product Found");
+//            return;
+//        }
+//        try {
+//            int IDSearch = Integer.parseInt(idSearch.getText());
+//            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(IDSearch);
+//
+//            if(!foundProducts.isEmpty()){
+//                StockProducts product = foundProducts.get(0);
+//                HideBlock.setVisible(true);
+//                HideBtn.setVisible(true);
+//
+//                oldProductID.setText("Product ID             :     " + product.getId());
+//                oldProductName.setText("Product Name         :     " + product.getName());
+//                oldProductModel.setText("Product Model       :     " + product.getModel());
+//                oldProductPrice.setText("Product Price       :     " + product.getPrice());
+//                oldProductQuantity.setText("Product Quantity :     " + product.getQuantity());
+//                oldProductType.setText("Product Type         :     " + product.getProductType());
+//                oldProductBrand.setText("Product Brand       :     " + product.getBrand());
+//                oldProductColor.setText("Product Color       :     " + product.getProductColor());
+//                oldProductWarranty.setText("Product Warranty :     " + product.getWarranty());
+//
+//                idSearch.clear();
+//
+//
+//            }else{
+//                HideBlock.setVisible(false);
+//                HideBtn.setVisible(false);
+//                successLabel.setStyle("-fx-text-fill: red;");
+//                successLabel.setText("No Product Found");
+//                clearOldProductInfo();
+//            }
+//
+//        }catch (NumberFormatException e) {
+//            HideBlock.setVisible(false);
+//            HideBtn.setVisible(false);
+//            successLabel.setStyle("-fx-text-fill: red;");
+//            successLabel.setText("Invalid Product ID");
+//            clearOldProductInfo();
+//        } catch (Exception e) {
+//            HideBlock.setVisible(false);
+//            HideBtn.setVisible(false);
+//            successLabel.setStyle("-fx-text-fill: red;");
+//            successLabel.setText("Error occurred");
+//            clearOldProductInfo();
+//        }
+//    }
     private void clearOldProductInfo() {
 
         oldProductID.setText("Product ID             :     ");

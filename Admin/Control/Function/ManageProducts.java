@@ -1,188 +1,316 @@
 package Admin.Control.Function;
 
-import java.io.File;
+import java.sql.*;
 import  java.util.Scanner;
 import java.util.ArrayList;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-
 
 public class ManageProducts{
 
-    public static void AddProduct(TemporaryStock tempStock) {
-        ArrayList<StockProducts> productsList = new ArrayList<>();
+    static class TemporaryStock{
+        int id;
+        String name;
+        String model;
+        double price;
+        int quantity;
+        String productType;
+        int warranty;
+        String brand;
+        String ProductColor;
+    }
 
-        try (FileWriter file = new FileWriter("Stock.txt", true)) {
 
-            StockProducts products = new StockProducts(tempStock.id, tempStock.name, tempStock.model,
-                    tempStock.price, tempStock.quantity, tempStock.productType,
-                    tempStock.brand, tempStock.ProductColor, tempStock.warranty);
+    public void AddProduct() {
+        Scanner obj = new Scanner(System.in);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
+        ArrayList<TemporaryStock> productsList = new ArrayList<>();
 
-            productsList.add(products);
 
-            for (StockProducts product : productsList) {
-                file.write(product.getId() + "\n");
-                file.write(product.getName() + "\n");
-                file.write(product.getModel() + "\n");
-                file.write(product.getPrice() + "\n");
-                file.write(product.getQuantity() + "\n");
-                file.write(product.getProductType() + "\n");
-                file.write(product.getBrand() + "\n");
-                file.write(product.getProductColor() + "\n");
-                file.write(product.getWarranty() + "\n");
+        String insertProductQuery =
+                "INSERT INTO StockProduct (Product_ID, Product_Name, Product_Model, Product_Price, Product_Quantity, Product_Type, Product_Brand, Product_Color, Product_Warranty) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        String HistoryAdmin = "INSERT INTO AdminHistory (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement insertProductStatement = connection.prepareStatement(insertProductQuery);
+             PreparedStatement HistoryAdminStatement = connection.prepareStatement(HistoryAdmin)) {
+
+            while (true) {
+                TemporaryStock tempStock = new TemporaryStock();
+
+                System.out.print("Product ID        : ");
+                tempStock.id = obj.nextInt();
+                obj.nextLine();
+
+                System.out.print("Product Name      : ");
+                tempStock.name = obj.nextLine();
+
+                System.out.print("Product Model     : ");
+                tempStock.model = obj.nextLine();
+
+                System.out.print("Product Price     : ");
+                tempStock.price = obj.nextDouble();
+                obj.nextLine();
+
+                System.out.print("Product Quantity  : ");
+                tempStock.quantity = obj.nextInt();
+                obj.nextLine();
+
+                System.out.print("Product Type      : ");
+                tempStock.productType = obj.nextLine();
+
+                System.out.print("Product Brand     : ");
+                tempStock.brand = obj.nextLine();
+
+                System.out.print("Product Color     : ");
+                tempStock.ProductColor = obj.nextLine();
+
+                System.out.print("Product Warranty  : ");
+                tempStock.warranty = obj.nextInt();
+                obj.nextLine();
+
+                // Store product temporarily in the ArrayList
+                productsList.add(tempStock);
+
+                // Ask user if they want to add another product
+                System.out.print("Do you want to add another product? (Y|N): ");
+                char choice = obj.nextLine().charAt(0);
+
+                if (choice == 'N' || choice == 'n') {
+                    break;
+                }
             }
 
-            System.out.println("Product added successfully!");
+            // After collecting all products, insert them into the database
+            for (TemporaryStock tempStock : productsList) {
+                // Insert the product into the StockProduct table
+                insertProductStatement.setInt(1, tempStock.id);
+                insertProductStatement.setString(2, tempStock.name);
+                insertProductStatement.setString(3, tempStock.model);
+                insertProductStatement.setDouble(4, tempStock.price);
+                insertProductStatement.setInt(5, tempStock.quantity);
+                insertProductStatement.setString(6, tempStock.productType);
+                insertProductStatement.setString(7, tempStock.brand);
+                insertProductStatement.setString(8, tempStock.ProductColor);
+                insertProductStatement.setInt(9, tempStock.warranty);
 
-        } catch (IOException e) {
-            System.out.println("No such file");
+                int rowsAffected = insertProductStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Product " + tempStock.id + " added successfully.");
+
+
+                    HistoryAdminStatement.setInt(1, tempStock.id);
+                    HistoryAdminStatement.setString(2, "ADD");
+                    HistoryAdminStatement.executeUpdate();
+                } else {
+                    System.out.println("Product " + tempStock.id + " addition failed.");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
 
+    public void UpdateProduct() {
+        Scanner obj = new Scanner(System.in);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-    public static void UpdateProduct(TemporaryStock updatedProduct) {
+        System.out.print("Enter product ID: ");
+        int product_id = obj.nextInt();
+        obj.nextLine(); // Consume newline
 
-        ArrayList<StockProducts> productsList = new ArrayList<>();
-        boolean productFound=false;
-        Scanner obj= new Scanner(System.in);
+        String searchQuery = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+        String updateQuery =
+        "UPDATE StockProduct SET Product_Name = ?, Product_Model = ?, Product_Price = ?," +
+        " Product_Quantity = ?, Product_Type = ?, Product_Brand = ?, Product_Color = ?, " +
+         "Product_Warranty = ? WHERE Product_ID = ?";
 
-        try {
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+        String AdminHistory = "INSERT INTO ProductAudit (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement searchStatement = connection.prepareStatement(searchQuery);
+             PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+             PreparedStatement AdminHistoryStatement = connection.prepareStatement(AdminHistory)) {
 
-            while (fileReader.hasNextLine()) {
+            //Search the product with match the id
+            searchStatement.setInt(1, product_id);
+            ResultSet resultSet = searchStatement.executeQuery();
 
-                TemporaryStock tempStock = new TemporaryStock();
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
+            if (resultSet.next()) {
+                // Display current product details
+                System.out.println("Current Product Details:");
+                System.out.println("---------------------------------");
+                System.out.println("Product ID          : " + resultSet.getInt("Product_ID"));
+                System.out.println("Product Name        : " + resultSet.getString("Product_Name"));
+                System.out.println("Product Model       : " + resultSet.getString("Product_Model"));
+                System.out.println("Product Price       : " + resultSet.getDouble("Product_Price") + " $");
+                System.out.println("Product Quantity    : " + resultSet.getInt("Product_Quantity"));
+                System.out.println("Product Type        : " + resultSet.getString("Product_Type"));
+                System.out.println("Product Brand       : " + resultSet.getString("Product_Brand"));
+                System.out.println("Product Color       : " + resultSet.getString("Product_Color"));
+                System.out.println("Product Warranty    : " + resultSet.getInt("Product_Warranty") + " Year");
+                System.out.println("---------------------------------");
 
+                // Get new product details
+                System.out.print("Enter new Product Name        : ");
+                String name = obj.nextLine();
+                System.out.print("Enter new Product Model       : ");
+                String model = obj.nextLine();
+                System.out.print("Enter new Product Price       : ");
+                double price = obj.nextDouble();
+                System.out.print("Enter new Product Quantity    : ");
+                int quantity = obj.nextInt();
+                obj.nextLine(); // Consume newline
+                System.out.print("Enter new Product Type        : ");
+                String type = obj.nextLine();
+                System.out.print("Enter new Product Brand       : ");
+                String brand = obj.nextLine();
+                System.out.print("Enter new Product Color       : ");
+                String color = obj.nextLine();
+                System.out.print("Enter new Product Warranty    : ");
+                int warranty = obj.nextInt();
 
-                // Find product id to match each other and give option to update products info
-                if(tempStock.id == updatedProduct.id) {
-                    productsList.add(new StockProducts(updatedProduct.id, updatedProduct.name, updatedProduct.model, updatedProduct.price, updatedProduct.quantity, updatedProduct.productType, updatedProduct.brand, updatedProduct.ProductColor, updatedProduct.warranty));
-                }else {
-                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
+                // Update new info into database
+                updateStatement.setString(1, name);
+                updateStatement.setString(2, model);
+                updateStatement.setDouble(3, price);
+                updateStatement.setInt(4, quantity);
+                updateStatement.setString(5, type);
+                updateStatement.setString(6, brand);
+                updateStatement.setString(7, color);
+                updateStatement.setInt(8, warranty);
+                updateStatement.setInt(9, product_id);
+
+                int rowsAffected = updateStatement.executeUpdate();
+                //If rowsAffected > 0, it means at least one row was updated
+                //If rowsAffected == 0, it means no rows were updated
+                if (rowsAffected > 0) {
+                    System.out.println("Product updated successfully.");
+
+                    AdminHistoryStatement.setInt(1, product_id);
+                    AdminHistoryStatement.setString(2, "UPDATE"); // Action type is "UPDATE"
+                    AdminHistoryStatement.executeUpdate();
+                } else {
+                    System.out.println("Product update failed.");
                 }
+            } else {
+                System.out.println("Product with ID " + product_id + " not found.");
             }
-            fileReader.close();
-            try (FileWriter fileWriter = new FileWriter("Stock.txt", false)) {
-                for (StockProducts product : productsList) {
-                    fileWriter.write(product.getId()            + "\n");
-                    fileWriter.write(product.getName()          + "\n");
-                    fileWriter.write(product.getModel()         + "\n");
-                    fileWriter.write(product.getPrice()         + "\n");
-                    fileWriter.write(product.getQuantity()      + "\n");
-                    fileWriter.write(product.getProductType()   + "\n");
-                    fileWriter.write(product.getBrand()         + "\n");
-                    fileWriter.write(product.getProductColor()  + "\n");
-                    fileWriter.write(product.getWarranty()      + "\n");
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("The file is last dance");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
 
+    public void DeleteProduct() {
+        Scanner obj = new Scanner(System.in);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
+        System.out.print("Enter product ID to delete: ");
+        int product_id = obj.nextInt();
+        obj.nextLine();
 
+        String deleteQuery = "DELETE FROM StockProduct WHERE Product_ID = ?";
+        String AdminHistory = "INSERT INTO AdminHistory (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
-    //not fix yet
-    public static void DeleteProduct(int IdSearch) {
-        ArrayList<StockProducts> productsList = new ArrayList<>();
-        boolean productFound = false;
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+             PreparedStatement AdminHistoryStatement = connection.prepareStatement(AdminHistory)) {
 
+            preparedStatement.setInt(1, product_id);
+            int rowsAffected = preparedStatement.executeUpdate();
 
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+            //IT check if product is match the id or not to delete,
+            //if it matchs the product id it will be 1 and delete
+            //if not it will be 0
 
-            while (fileReader.hasNextLine()) {
+            if (rowsAffected > 0) {
+                System.out.println("Product with ID " + product_id + " deleted successfully.");
 
-                TemporaryStock tempStock = new TemporaryStock();
-
-                tempStock.id = Integer.parseInt(fileReader.nextLine());
-                tempStock.name = fileReader.nextLine();
-                tempStock.model = fileReader.nextLine();
-                tempStock.price = Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity = Integer.parseInt(fileReader.nextLine());
-                tempStock.productType = fileReader.nextLine();
-                tempStock.brand = fileReader.nextLine();
-                tempStock.ProductColor = fileReader.nextLine();
-                tempStock.warranty = Integer.parseInt(fileReader.nextLine());
-
-                if (tempStock.id == IdSearch) {
-                    productFound = true;
-                    continue;
-                }
-                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
+                AdminHistoryStatement.setInt(1, product_id);
+                AdminHistoryStatement.setString(2, "DELETE");
+                AdminHistoryStatement.executeUpdate();
+            } else {
+                System.out.println("Product with ID " + product_id + " not found.");
             }
-            fileReader.close();
-            if (productFound) {
-                try (FileWriter fileWriter = new FileWriter("Stock.txt", false)) {
-                    for (StockProducts product : productsList) {
 
-                        fileWriter.write(product.getId()            + "\n");
-                        fileWriter.write(product.getName()          + "\n");
-                        fileWriter.write(product.getModel()         + "\n");
-                        fileWriter.write(product.getPrice()         + "\n");
-                        fileWriter.write(product.getQuantity()      + "\n");
-                        fileWriter.write(product.getProductType()   + "\n");
-                        fileWriter.write(product.getBrand()         + "\n");
-                        fileWriter.write(product.getProductColor()  + "\n");
-                        fileWriter.write(product.getWarranty()      + "\n");
-
-                    }
-                }
-            }
-        }catch(IOException e){
-            System.out.println("The file is last dance");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
 
-    public static ArrayList<StockProducts> SearchProduct(int IDSearch) {
+    public void SearchProduct() {
+        Scanner obj = new Scanner(System.in);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-        ArrayList<StockProducts> productsList = new ArrayList<>();
+        ArrayList<TemporaryStock> productsList = new ArrayList<>();
 
-        try {
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+        System.out.print("Enter product ID: ");
+        int product_id = obj.nextInt();
+        obj.nextLine();
 
-            while(fileReader.hasNextLine()){
+        //Formula to get product that match with id in databases
+        String searchQuery = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
+
+            preparedStatement.setInt(1, product_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            while (resultSet.next()) {
                 TemporaryStock tempStock = new TemporaryStock();
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
 
+                tempStock.id = resultSet.getInt("Product_ID");
+                tempStock.name = resultSet.getString("Product_Name");
+                tempStock.model = resultSet.getString("Product_Model");
+                tempStock.price = resultSet.getDouble("Product_Price");
+                tempStock.quantity = resultSet.getInt("Product_Quantity");
+                tempStock.productType = resultSet.getString("Product_Type");
+                tempStock.brand = resultSet.getString("Product_Brand");
+                tempStock.ProductColor = resultSet.getString("Product_Color");
+                tempStock.warranty = resultSet.getInt("Product_Warranty");
 
-                if (IDSearch ==tempStock.id) {
-                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
-                }
+                // Adding product to the list
+                productsList.add(tempStock);
             }
-            fileReader.close();
 
-        } catch (IOException e) {
-            System.out.println("The file is last dance");
+            if (!productsList.isEmpty()) {
+                //Just get data from productList to show
+                for (TemporaryStock product : productsList) {
+                    System.out.println("---------------------------------");
+                    System.out.println("Product ID              : " + product.id);
+                    System.out.println("Product Name            : " + product.name);
+                    System.out.println("Product Model           : " + product.model);
+                    System.out.println("Product Price           : " + product.price + " $");
+                    System.out.println("Product Quantity        : " + product.quantity);
+                    System.out.println("Product Type            : " + product.productType);
+                    System.out.println("Product Brand           : " + product.brand);
+                    System.out.println("Product Color           : " + product.ProductColor);
+                    System.out.println("Product Warranty        : " + product.warranty + " Year");
+                    System.out.println("---------------------------------");
+                }
+            } else {
+                System.out.println("Product with ID " + product_id + " not found.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return productsList;
     }
 
 
@@ -216,42 +344,62 @@ public class ManageProducts{
     }
 
 
+    public void DisplayProduct() {
+        ArrayList<StockProducts> productsList = new ArrayList<>();
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
+        String selectQuery = "SELECT * FROM StockProduct";
 
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectQuery)) {
 
-    public static void DisplayProduct(TemporaryStock displayProduct){
-        TemporaryStock tempStock= new TemporaryStock();
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
-
-
-            if(!fileReader.hasNextLine()) {
-                System.out.println("No product in the stock.");
-                fileReader.close();
+            if (!resultSet.next()) {
+                System.out.println("No products in the stock.");
                 return;
             }
+            do {
+                TemporaryStock tempStock = new TemporaryStock();
 
-            while(fileReader.hasNextLine()){
-                displayProduct.id= Integer.parseInt(fileReader.nextLine());
-                displayProduct.name= fileReader.nextLine();
-                displayProduct.model= fileReader.nextLine();
-                displayProduct.price= Double.parseDouble(fileReader.nextLine());
-                displayProduct.quantity= Integer.parseInt(fileReader.nextLine());
-                displayProduct.productType= fileReader.nextLine();
-                displayProduct.brand= fileReader.nextLine();
-                displayProduct.ProductColor= fileReader.nextLine();
-                displayProduct.warranty= Integer.parseInt(fileReader.nextLine());
+                tempStock.id = resultSet.getInt("Product_ID");
+                tempStock.name = resultSet.getString("Product_Name");
+                tempStock.model = resultSet.getString("Product_Model");
+                tempStock.price = resultSet.getDouble("Product_Price");
+                tempStock.quantity = resultSet.getInt("Product_Quantity");
+                tempStock.productType = resultSet.getString("Product_Type");
+                tempStock.brand = resultSet.getString("Product_Brand");
+                tempStock.ProductColor = resultSet.getString("Product_Color");
+                tempStock.warranty = resultSet.getInt("Product_Warranty");
 
+
+                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                        tempStock.quantity, tempStock.productType, tempStock.brand,
+                        tempStock.ProductColor, tempStock.warranty));
+
+            } while (resultSet.next());
+
+
+            for (StockProducts product : productsList) {
+                System.out.println("---------------------------------");
+                System.out.println("Product ID              : " + product.getId());
+                System.out.println("Product Name            : " + product.getName());
+                System.out.println("Product Model           : " + product.getModel());
+                System.out.println("Product Price           : " + product.getPrice() + " $");
+                System.out.println("Product Quantity        : " + product.getQuantity());
+                System.out.println("Product Type            : " + product.getProductType());
+                System.out.println("Product Brand           : " + product.getBrand());
+                System.out.println("Product Color           : " + product.getProductColor());
+                System.out.println("Product Warranty        : " + product.getWarranty() + "  Year");
+                System.out.println("---------------------------------");
             }
-            fileReader.close();
-        }catch (IOException e){
-            System.out.println("File not found !");
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving products from the database.");
+            e.printStackTrace();
         }
     }
-
-
-
 
 
     public void SortByPrice(){
@@ -275,49 +423,43 @@ public class ManageProducts{
     }
 
 
-
-
-    public void Ascending(){
+    public void Ascending() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-            if(!fileReader.hasNextLine()) {
-                System.out.println("No product in the stock.");
-                fileReader.close();
+        String selectQuery = "SELECT * FROM StockProduct ORDER BY Product_Price ASC";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectQuery)) {
+
+            if (!resultSet.next()) {
+                System.out.println("No products in the stock.");
                 return;
             }
 
-            while(fileReader.hasNextLine()){
+            do {
+                TemporaryStock tempStock = new TemporaryStock();
 
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
+                tempStock.id = resultSet.getInt("Product_ID");
+                tempStock.name = resultSet.getString("Product_Name");
+                tempStock.model = resultSet.getString("Product_Model");
+                tempStock.price = resultSet.getDouble("Product_Price");
+                tempStock.quantity = resultSet.getInt("Product_Quantity");
+                tempStock.productType = resultSet.getString("Product_Type");
+                tempStock.brand = resultSet.getString("Product_Brand");
+                tempStock.ProductColor = resultSet.getString("Product_Color");
+                tempStock.warranty = resultSet.getInt("Product_Warranty");
 
-                boolean isDuplicate = false;
-                for (StockProducts product : productsList) {
-                    if (product.getId() == tempStock.id) {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
+                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                        tempStock.quantity, tempStock.productType, tempStock.brand,
+                        tempStock.ProductColor, tempStock.warranty));
 
-                // If not duplicate, add to the list
-                if (!isDuplicate) {
-                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
-                }
-            }
-            fileReader.close();
-            Collections.sort(productsList, Comparator.comparingDouble(StockProducts::getPrice));
+            } while (resultSet.next());
 
+            // Display the sorted product list
             System.out.println("Product By Ascending");
             for (StockProducts product : productsList) {
                 System.out.println("---------------------------------");
@@ -333,59 +475,50 @@ public class ManageProducts{
                 System.out.println("---------------------------------");
             }
 
-        }catch (IOException e){
-            System.out.println("File not found !");
+        } catch (SQLException e) {
+            System.out.println("Error retrieving products from the database.");
+            e.printStackTrace();
         }
-
     }
 
 
-
-
-    public void Descending(){
+    public void Descending() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+        String selectQuery = "SELECT * FROM StockProduct ORDER BY Product_Price DESC";
 
-            if(!fileReader.hasNextLine()) {
-                System.out.println("No product in the stock.");
-                fileReader.close();
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectQuery)) {
+
+            if (!resultSet.next()) {
+                System.out.println("No products in the stock.");
                 return;
             }
 
-            while(fileReader.hasNextLine()){
+            do {
+                TemporaryStock tempStock = new TemporaryStock();
 
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
-                boolean isDuplicate = false;
-                for (StockProducts product : productsList) {
-                    if (product.getId() == tempStock.id) {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
+                tempStock.id = resultSet.getInt("Product_ID");
+                tempStock.name = resultSet.getString("Product_Name");
+                tempStock.model = resultSet.getString("Product_Model");
+                tempStock.price = resultSet.getDouble("Product_Price");
+                tempStock.quantity = resultSet.getInt("Product_Quantity");
+                tempStock.productType = resultSet.getString("Product_Type");
+                tempStock.brand = resultSet.getString("Product_Brand");
+                tempStock.ProductColor = resultSet.getString("Product_Color");
+                tempStock.warranty = resultSet.getInt("Product_Warranty");
 
-                // If not duplicate, add to the list
-                if (!isDuplicate) {
-                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
-                }
+                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                        tempStock.quantity, tempStock.productType, tempStock.brand,
+                        tempStock.ProductColor, tempStock.warranty));
 
-            }
-            fileReader.close();
-            //It takes obj product to store temp in productList
-            //It put obj product to compare by price with library Collections.sort()
-            Collections.sort(productsList, Comparator.comparingDouble(StockProducts::getPrice).reversed());
+            } while (resultSet.next());
 
+            // Display the sorted product list
             System.out.println("Product By Descending");
             for (StockProducts product : productsList) {
                 System.out.println("---------------------------------");
@@ -401,60 +534,49 @@ public class ManageProducts{
                 System.out.println("---------------------------------");
             }
 
-        }catch (IOException e){
-            System.out.println("File not found !");
+        } catch (SQLException e) {
+            System.out.println("Error retrieving products from the database.");
+            e.printStackTrace();
         }
     }
 
-
-
-
-    public void SortByID(){
+    public void SortByID() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-            if(!fileReader.hasNextLine()) {
-                System.out.println("No product in the stock.");
-                fileReader.close();
+        String selectQuery = "select * from StockProduct order by Product_ID Asc";
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(selectQuery)) {
+
+            if (!resultSet.next()) {
+                System.out.println("No products in the stock.");
                 return;
             }
 
-            while(fileReader.hasNextLine()){
+            do {
+                TemporaryStock tempStock = new TemporaryStock();
 
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
+                tempStock.id = resultSet.getInt("Product_ID");
+                tempStock.name = resultSet.getString("Product_Name");
+                tempStock.model = resultSet.getString("Product_Model");
+                tempStock.price = resultSet.getDouble("Product_Price");
+                tempStock.quantity = resultSet.getInt("Product_Quantity");
+                tempStock.productType = resultSet.getString("Product_Type");
+                tempStock.brand = resultSet.getString("Product_Brand");
+                tempStock.ProductColor = resultSet.getString("Product_Color");
+                tempStock.warranty = resultSet.getInt("Product_Warranty");
 
+                productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                        tempStock.quantity, tempStock.productType, tempStock.brand,
+                        tempStock.ProductColor, tempStock.warranty));
 
-                boolean duplicateFound = false;
-                // Check if the product already exists in the list by matching product ID
-                for (StockProducts product : productsList) {
-                    if (product.getId() == tempStock.id) {
-                        duplicateFound = true;
-                        break;
-                    }
-                }
+            } while (resultSet.next());
 
-                if (!duplicateFound) {
-                    // Add product to list if not a duplicate
-                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
-                }
-
-            }
-            fileReader.close();
-            //It takes obj product to store temp in productList
-            //It put obj product to compare by price with library Collections.sort()
-            Collections.sort(productsList, Comparator.comparingInt(StockProducts::getId));
-
+            // Display the sorted product list
             System.out.println("Product By ID");
             for (StockProducts product : productsList) {
                 System.out.println("---------------------------------");
@@ -470,16 +592,20 @@ public class ManageProducts{
                 System.out.println("---------------------------------");
             }
 
-        }catch (IOException e){
-            System.out.println("File not found !");
+        } catch (SQLException e) {
+            System.out.println("Error retrieving products from the database.");
+            e.printStackTrace();
         }
     }
-    public void SortByProductType(){
+
+
+    public void SortByProductType() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        TemporaryStock tempStock= new TemporaryStock();
+        TemporaryStock tempStock = new TemporaryStock();
         boolean duplicateFound;
-        Scanner obj= new Scanner(System.in);
+        Scanner obj = new Scanner(System.in);
         int choice;
+
         System.out.println("1 .  Sort By Laptop");
         System.out.println("2 .  Sort By Phone");
         System.out.println("3 .  Sort By Headphone");
@@ -491,60 +617,61 @@ public class ManageProducts{
         System.out.println("9 .  Sort By Mouse");
         System.out.println("10. Sort  By MousePad");
         System.out.println("Choose a number : ");
-        choice= obj.nextInt();
-        obj.nextLine();
+        choice = obj.nextInt();
+        obj.nextLine();  // Consume newline
 
-        String productType= switch (choice){
-            case 1 ->   "Laptop";
-            case 2 ->   "Phone";
-            case 3 ->   "Headphone";
-            case 4 ->   "Charger";
-            case 5 ->   "Adaptor";
-            case 6 ->   "Headset";
-            case 7 ->   "Speaker";
-            case 8 ->   "Keyboard";
-            case 9 ->   "Mouse";
-            case 10 ->  "MousePad";
+        String productType = switch (choice) {
+            case 1 -> "Laptop";
+            case 2 -> "Phone";
+            case 3 -> "Headphone";
+            case 4 -> "Charger";
+            case 5 -> "Adaptor";
+            case 6 -> "Headset";
+            case 7 -> "Speaker";
+            case 8 -> "Keyboard";
+            case 9 -> "Mouse";
+            case 10 -> "MousePad";
             default -> {
                 System.out.println("Invalid choice!");
                 yield null;
-                //if the choice is invalid (doesn't match any case), the method will return null as the value for productType.
             }
         };
-        if (productType == null){
+
+        if (productType == null) {
             return;
         }
-        try{
-            File file = new File("Stock.txt");
-            Scanner fileReader = new Scanner(file);
 
-            if(!fileReader.hasNextLine()) {
-                System.out.println("No product in the stock.");
-                fileReader.close();
-                return;
-            }
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-            while(fileReader.hasNextLine()){
-                tempStock.id= Integer.parseInt(fileReader.nextLine());
-                tempStock.name= fileReader.nextLine();
-                tempStock.model= fileReader.nextLine();
-                tempStock.price= Double.parseDouble(fileReader.nextLine());
-                tempStock.quantity= Integer.parseInt(fileReader.nextLine());
-                tempStock.productType= fileReader.nextLine();
-                tempStock.brand= fileReader.nextLine();
-                tempStock.ProductColor= fileReader.nextLine();
-                tempStock.warranty= Integer.parseInt(fileReader.nextLine());
+        // Query to get products by product type
+        String query = "SELECT * FROM StockProduct WHERE Product_Type = ? ORDER BY Product_ID";
 
-//                THe reason why I use id to check product also is that
-//                It prevent of duplicated product to sort many times
-//                By using this it will check the product id which search that the product id is already exist add
-//                To productList or not, if not it will add, but if it already exists, it will break
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-                if (tempStock.productType.equalsIgnoreCase(productType)) {
+            statement.setString(1, productType);  // Set the product type in the query
 
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    System.out.println("No products found for this type.");
+                    return;
+                }
+
+                do {
+                    tempStock.id = resultSet.getInt("Product_ID");
+                    tempStock.name = resultSet.getString("Product_Name");
+                    tempStock.model = resultSet.getString("Product_Model");
+                    tempStock.price = resultSet.getDouble("Product_Price");
+                    tempStock.quantity = resultSet.getInt("Product_Quantity");
+                    tempStock.productType = resultSet.getString("Product_Type");
+                    tempStock.brand = resultSet.getString("Product_Brand");
+                    tempStock.ProductColor = resultSet.getString("Product_Color");
+                    tempStock.warranty = resultSet.getInt("Product_Warranty");
+
+                    // Prevent adding duplicate products
                     duplicateFound = false;
-
-                    // Check for duplicate based on product ID
                     for (StockProducts product : productsList) {
                         if (product.getId() == tempStock.id) {
                             duplicateFound = true;
@@ -553,49 +680,38 @@ public class ManageProducts{
                     }
 
                     if (!duplicateFound) {
-                        productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price, tempStock.quantity, tempStock.productType, tempStock.brand, tempStock.ProductColor, tempStock.warranty));
+                        productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model,
+                                tempStock.price, tempStock.quantity, tempStock.productType,
+                                tempStock.brand, tempStock.ProductColor, tempStock.warranty));
                     }
+
+                } while (resultSet.next());
+
+                // Display sorted products
+                System.out.println("Products of Type: " + productType);
+                for (StockProducts product : productsList) {
+                    System.out.println("---------------------------------");
+                    System.out.println("Product ID              : " + product.getId());
+                    System.out.println("Product Name            : " + product.getName());
+                    System.out.println("Product Model           : " + product.getModel());
+                    System.out.println("Product Price           : " + product.getPrice() + " $");
+                    System.out.println("Product Quantity        : " + product.getQuantity());
+                    System.out.println("Product Type            : " + product.getProductType());
+                    System.out.println("Product Brand           : " + product.getBrand());
+                    System.out.println("Product Color           : " + product.getProductColor());
+                    System.out.println("Product Warranty        : " + product.getWarranty() + "  Year");
+                    System.out.println("---------------------------------");
                 }
             }
-            fileReader.close();
-            Collections.sort(productsList, Comparator.comparingInt(StockProducts::getId));
 
-            for (StockProducts product : productsList) {
-                System.out.println("---------------------------------");
-                System.out.println("Product ID              : " + product.getId());
-                System.out.println("Product Name            : " + product.getName());
-                System.out.println("Product Model           : " + product.getModel());
-                System.out.println("Product Price           : " + product.getPrice() + " $");
-                System.out.println("Product Quantity        : " + product.getQuantity());
-                System.out.println("Product Type            : " + product.getProductType());
-                System.out.println("Product Brand           : " + product.getBrand());
-                System.out.println("Product Color           : " + product.getProductColor());
-                System.out.println("Product Warranty        : " + product.getWarranty() + "  Year");
-                System.out.println("---------------------------------");
-            }
-        }catch (IOException e){
-            System.out.println("File is a last dance !");
+        } catch (SQLException e) {
+            System.out.println("Database connection error: " + e.getMessage());
         }
     }
 
-//    public void UpdateAmountProduct(){
-//
-//    }
 
+    public static void updateAmountProduct() {
 
-    //    use to store data from user input and point back to constructor
-    //    user to store data from file to show
-
-    public static class TemporaryStock{
-        public int id;
-        public String name;
-        public String model;
-        public double price;
-        public int quantity;
-        public String productType;
-        public int warranty;
-        public String brand;
-        public String ProductColor;
     }
 }
 

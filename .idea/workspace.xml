@@ -5,58 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Function/TEMP" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/About/About.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/About/AboutControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/MainPage/Main.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/MainPage/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/MainPage/MainControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SortProduct/SortControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SortProduct/SortProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SortProduct/SortProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/Style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Payments/PaymentControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Payments/Payments.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Payments/Payments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Products/Products.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Products/Products.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Products/ProductsControler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/GUI/Style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/Exit.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/adminPic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/online1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/online2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Picture/userIcon.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Control/TestConnectionDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Java-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Java-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/ManageProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/StockProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/StockProducts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/TrackProducts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Draw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/About/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Stock.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Draw.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/TestConnectionDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stock.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +28,8 @@
       <list>
         <option value="OpenRewrite Recipe" />
         <option value="package.json" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,55 +59,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.About.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AddProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AdminInterface.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DeleteProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DisplayProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ManageProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Payments.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SearchProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SearchProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SortProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestConnectionDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UpdateProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.test.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Admin&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/Java-project/authentication/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.About.executor": "Run",
+    "Application.AddProduct.executor": "Run",
+    "Application.AdminInterface.executor": "Run",
+    "Application.DeleteProduct.executor": "Run",
+    "Application.DisplayProducts.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ManageProducts.executor": "Run",
+    "Application.Payments.executor": "Run",
+    "Application.Products.executor": "Run",
+    "Application.SearchProduct.executor": "Run",
+    "Application.SearchProducts.executor": "Run",
+    "Application.SortProduct.executor": "Run",
+    "Application.TestConnectionDatabase.executor": "Run",
+    "Application.TrackHistory.executor": "Run",
+    "Application.UpdateProduct.executor": "Run",
+    "Application.test.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Admin",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/DELL/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/IdeaProjects/Java-project/authentication/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\Picture" />
@@ -160,7 +121,7 @@
       <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\SearchProduct" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DeleteProduct">
+  <component name="RunManager" selected="Application.AdminInterface">
     <configuration name="About" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.About.About" />
       <module name="Java-project" />
@@ -244,20 +205,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.SortProduct.SortProduct" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.GUI.ManageProducts.SortProduct.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestConnectionDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Admin.Control.TestConnectionDatabase" />
       <module name="Java-project" />
@@ -297,16 +244,14 @@
       <item itemvalue="Application.AdminInterface" />
       <item itemvalue="Application.TestConnectionDatabase" />
       <item itemvalue="Application.AddProduct" />
-      <item itemvalue="Application.SortProduct" />
       <item itemvalue="Application.UpdateProduct" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UpdateProduct" />
-        <item itemvalue="Application.AddProduct" />
         <item itemvalue="Application.AdminInterface" />
+        <item itemvalue="Application.AddProduct" />
+        <item itemvalue="Application.UpdateProduct" />
         <item itemvalue="Application.TestConnectionDatabase" />
-        <item itemvalue="Application.SortProduct" />
       </list>
     </recent_temporary>
   </component>
@@ -370,6 +315,10 @@
       <workItem from="1740896203498" duration="5828000" />
       <workItem from="1740929941099" duration="4273000" />
       <workItem from="1740971013435" duration="6943000" />
+      <workItem from="1741247372926" duration="262000" />
+      <workItem from="1741272349147" duration="6788000" />
+      <workItem from="1741321878565" duration="3288000" />
+      <workItem from="1741361406316" duration="3897000" />
     </task>
     <servers />
   </component>

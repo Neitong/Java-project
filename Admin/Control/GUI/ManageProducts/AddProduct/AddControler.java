@@ -112,51 +112,51 @@ public class AddControler { // Fixed class name
             e.printStackTrace();
         }
     }
-    public void AddNewProduct(javafx.event.ActionEvent event) throws IOException {
-
-
-        if (productIdField.getText().isEmpty() || productNameField.getText().isEmpty()
-                || productModelField.getText().isEmpty() || productPriceField.getText().isEmpty()
-                || productQuantityField.getText().isEmpty() || productTypeField.getText().isEmpty()
-                || productColorField.getText().isEmpty() || productBrandField.getText().isEmpty()
-                || productWarrantyField.getText().isEmpty()) {
-
-            successLabel.setText("The Product Added Failed!!!");
-            return;
-        }
-
-        try {
-            ManageProducts.TemporaryStock tempStock  = new ManageProducts.TemporaryStock();
-            tempStock.id = Integer.parseInt(productIdField.getText());
-            tempStock.name = productNameField.getText();
-            tempStock.model = productModelField.getText();
-            tempStock.price = Double.parseDouble(productPriceField.getText());
-            tempStock.quantity = Integer.parseInt(productQuantityField.getText());
-            tempStock.productType = productTypeField.getText();
-            tempStock.brand = productBrandField.getText();
-            tempStock.ProductColor = productColorField.getText();
-            tempStock.warranty = Integer.parseInt(productWarrantyField.getText());
-
-            ManageProducts.AddProduct(tempStock);
-
-            successLabel.setText("Product Add Successful!!!");
-
-            productIdField.clear();
-            productNameField.clear();
-            productModelField.clear();
-            productPriceField.clear();
-            productQuantityField.clear();
-            productTypeField.clear();
-            productBrandField.clear();
-            productColorField.clear();
-            productWarrantyField.clear();
-
-        }catch (NumberFormatException e) {
-            successLabel.setText("The Product ID Entered Failed!!!");
-            return;
-        }catch (Exception e) {
-            successLabel.setText("The Product ID Entered Failed!!!");
-            return;
-        }
-    }
+//    public void AddNewProduct(javafx.event.ActionEvent event) throws IOException {
+//
+//
+//        if (productIdField.getText().isEmpty() || productNameField.getText().isEmpty()
+//                || productModelField.getText().isEmpty() || productPriceField.getText().isEmpty()
+//                || productQuantityField.getText().isEmpty() || productTypeField.getText().isEmpty()
+//                || productColorField.getText().isEmpty() || productBrandField.getText().isEmpty()
+//                || productWarrantyField.getText().isEmpty()) {
+//
+//            successLabel.setText("The Product Added Failed!!!");
+//            return;
+//        }
+//
+//        try {
+//            ManageProducts.TemporaryStock tempStock  = new ManageProducts.TemporaryStock();
+//            tempStock.id = Integer.parseInt(productIdField.getText());
+//            tempStock.name = productNameField.getText();
+//            tempStock.model = productModelField.getText();
+//            tempStock.price = Double.parseDouble(productPriceField.getText());
+//            tempStock.quantity = Integer.parseInt(productQuantityField.getText());
+//            tempStock.productType = productTypeField.getText();
+//            tempStock.brand = productBrandField.getText();
+//            tempStock.ProductColor = productColorField.getText();
+//            tempStock.warranty = Integer.parseInt(productWarrantyField.getText());
+//
+//            ManageProducts.AddProduct(tempStock);
+//
+//            successLabel.setText("Product Add Successful!!!");
+//
+//            productIdField.clear();
+//            productNameField.clear();
+//            productModelField.clear();
+//            productPriceField.clear();
+//            productQuantityField.clear();
+//            productTypeField.clear();
+//            productBrandField.clear();
+//            productColorField.clear();
+//            productWarrantyField.clear();
+//
+//        }catch (NumberFormatException e) {
+//            successLabel.setText("The Product ID Entered Failed!!!");
+//            return;
+//        }catch (Exception e) {
+//            successLabel.setText("The Product ID Entered Failed!!!");
+//            return;
+//        }
+//    }
 }

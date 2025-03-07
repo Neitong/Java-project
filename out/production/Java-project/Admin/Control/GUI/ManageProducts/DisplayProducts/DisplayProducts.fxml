@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,5 +71,22 @@
             </Button>
          </children>
       </HBox>
+      <ScrollPane layoutX="226.0" layoutY="88.0" prefHeight="690.0" prefWidth="1291.0">
+         <content>
+            <VBox prefHeight="3000.0" prefWidth="1287.0">
+               <children>
+                  <Pane prefHeight="83.0" prefWidth="1287.0">
+                     <children>
+                        <Label layoutX="510.0" layoutY="15.0" prefHeight="53.0" prefWidth="268.0" text="Stock Products">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

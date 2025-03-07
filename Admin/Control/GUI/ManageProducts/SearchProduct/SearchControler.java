@@ -116,44 +116,44 @@ public class SearchControler {
             e.printStackTrace();
         }
     }
-    public void searchProduct(javafx.event.ActionEvent event) throws IOException {
-
-
-        if (IdSearch.getText().isEmpty()) {
-            resultBlock.setText("No Product Found");
-            return;
-        }
-        try {
-            int idSearch = Integer.parseInt(IdSearch.getText());
-            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
-
-            if(!foundProducts.isEmpty()){
-                StockProducts product = foundProducts.get(0);
-
-                ProductID.setText("Product ID             :     " + product.getId());
-                ProductName.setText("Product Name         :     " + product.getName());
-                ProductModel.setText("Product Model       :     " + product.getModel());
-                ProductPrice.setText("Product Price       :     " + product.getPrice());
-                ProductQuantity.setText("Product Quantity :     " + product.getQuantity());
-                ProductType.setText("Product Type         :     " + product.getProductType());
-                ProductBrand.setText("Product Brand       :     " + product.getBrand());
-                ProductColor.setText("Product Color       :     " + product.getProductColor());
-                ProductWarranty.setText("Product Warranty :     " + product.getWarranty());
-
-                IdSearch.setText("");
-            }else{
-                resultBlock.setText("No Product Found");
-                ClearValue();
-            }
-
-        }catch (NumberFormatException e) {
-            resultBlock.setText("Invalid Product ID");
-            ClearValue();
-        } catch (Exception e) {
-            resultBlock.setText("Error occurred");
-            ClearValue();
-        }
-    }
+//    public void searchProduct(javafx.event.ActionEvent event) throws IOException {
+//
+//
+//        if (IdSearch.getText().isEmpty()) {
+//            resultBlock.setText("No Product Found");
+//            return;
+//        }
+//        try {
+//            int idSearch = Integer.parseInt(IdSearch.getText());
+//            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
+//
+//            if(!foundProducts.isEmpty()){
+//                StockProducts product = foundProducts.get(0);
+//
+//                ProductID.setText("Product ID             :     " + product.getId());
+//                ProductName.setText("Product Name         :     " + product.getName());
+//                ProductModel.setText("Product Model       :     " + product.getModel());
+//                ProductPrice.setText("Product Price       :     " + product.getPrice());
+//                ProductQuantity.setText("Product Quantity :     " + product.getQuantity());
+//                ProductType.setText("Product Type         :     " + product.getProductType());
+//                ProductBrand.setText("Product Brand       :     " + product.getBrand());
+//                ProductColor.setText("Product Color       :     " + product.getProductColor());
+//                ProductWarranty.setText("Product Warranty :     " + product.getWarranty());
+//
+//                IdSearch.setText("");
+//            }else{
+//                resultBlock.setText("No Product Found");
+//                ClearValue();
+//            }
+//
+//        }catch (NumberFormatException e) {
+//            resultBlock.setText("Invalid Product ID");
+//            ClearValue();
+//        } catch (Exception e) {
+//            resultBlock.setText("Error occurred");
+//            ClearValue();
+//        }
+//    }
     public void ClearValue(){
         ProductID.setText("Product ID             :     " );
         ProductName.setText("Product Name         :     " );

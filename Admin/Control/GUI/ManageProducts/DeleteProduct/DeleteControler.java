@@ -83,49 +83,49 @@ public class DeleteControler {
         }
     }
 
-    public void searchProduct (ActionEvent event) {
-        if (IdSearch.getText().isEmpty()) {
-            return;
-        }
-
-        try {
-            int idSearch = Integer.parseInt(IdSearch.getText());
-            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
-
-            if (!foundProducts.isEmpty()) {
-                StockProducts product = foundProducts.get(0);
-
-                ProductID.setText("Product ID             :     " + product.getId());
-                ProductName.setText("Product Name         :     " + product.getName());
-                ProductModel.setText("Product Model       :     " + product.getModel());
-                ProductPrice.setText("Product Price       :     " + product.getPrice());
-                ProductQuantity.setText("Product Quantity :     " + product.getQuantity());
-                ProductType.setText("Product Type         :     " + product.getProductType());
-                ProductBrand.setText("Product Brand       :     " + product.getBrand());
-                ProductColor.setText("Product Color       :     " + product.getProductColor());
-                ProductWarranty.setText("Product Warranty :     " + product.getWarranty());
-
-                HideDeleteBlock.setVisible(true);
-                hidebtnDelete.setVisible(true);
-            } else {
-                sucessTemp.setText("No Product Found");
-                clearProductInfo();
-                HideDeleteBlock.setVisible(false);
-                hidebtnDelete.setVisible(false);
-            }
-
-        } catch (NumberFormatException e) {
-            sucessTemp.setText("No Product Found");
-            clearProductInfo();
-            HideDeleteBlock.setVisible(false);
-            hidebtnDelete.setVisible(false);
-        } catch (Exception e) {
-            sucessTemp.setText("No Product Found");
-            clearProductInfo();
-            HideDeleteBlock.setVisible(false);
-            hidebtnDelete.setVisible(false);
-        }
-    }
+//    public void searchProduct (ActionEvent event) {
+//        if (IdSearch.getText().isEmpty()) {
+//            return;
+//        }
+//
+//        try {
+//            int idSearch = Integer.parseInt(IdSearch.getText());
+//            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
+//
+//            if (!foundProducts.isEmpty()) {
+//                StockProducts product = foundProducts.get(0);
+//
+//                ProductID.setText("Product ID             :     " + product.getId());
+//                ProductName.setText("Product Name         :     " + product.getName());
+//                ProductModel.setText("Product Model       :     " + product.getModel());
+//                ProductPrice.setText("Product Price       :     " + product.getPrice());
+//                ProductQuantity.setText("Product Quantity :     " + product.getQuantity());
+//                ProductType.setText("Product Type         :     " + product.getProductType());
+//                ProductBrand.setText("Product Brand       :     " + product.getBrand());
+//                ProductColor.setText("Product Color       :     " + product.getProductColor());
+//                ProductWarranty.setText("Product Warranty :     " + product.getWarranty());
+//
+//                HideDeleteBlock.setVisible(true);
+//                hidebtnDelete.setVisible(true);
+//            } else {
+//                sucessTemp.setText("No Product Found");
+//                clearProductInfo();
+//                HideDeleteBlock.setVisible(false);
+//                hidebtnDelete.setVisible(false);
+//            }
+//
+//        } catch (NumberFormatException e) {
+//            sucessTemp.setText("No Product Found");
+//            clearProductInfo();
+//            HideDeleteBlock.setVisible(false);
+//            hidebtnDelete.setVisible(false);
+//        } catch (Exception e) {
+//            sucessTemp.setText("No Product Found");
+//            clearProductInfo();
+//            HideDeleteBlock.setVisible(false);
+//            hidebtnDelete.setVisible(false);
+//        }
+//    }
 
 
     private void clearProductInfo() {
@@ -140,28 +140,28 @@ public class DeleteControler {
         ProductWarranty.setText("Product Warranty :     ");
     }
 
-    public void DeleteProduct(ActionEvent event) {
-        clearProductInfo();
-        if (IdSearch.getText().isEmpty()) {
-            return;
-        }
-        try {
-            int idSearch = Integer.parseInt(IdSearch.getText());
-            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
-
-            if (!foundProducts.isEmpty()) {
-                ManageProducts.DeleteProduct(idSearch);
-                clearProductInfo();
-                sucessTemp.setText("Product Deleted Successfully");
-                HideDeleteBlock.setVisible(false);
-            } else {
-                sucessTemp.setText("No Product Found");
-            }
-
-        } catch (Exception e) {
-            sucessTemp.setText("Can not Delete Product");
-            clearProductInfo();
-        }
-    }
+//    public void DeleteProduct(ActionEvent event) {
+//        clearProductInfo();
+//        if (IdSearch.getText().isEmpty()) {
+//            return;
+//        }
+//        try {
+//            int idSearch = Integer.parseInt(IdSearch.getText());
+//            ArrayList<StockProducts> foundProducts = ManageProducts.SearchProduct(idSearch);
+//
+//            if (!foundProducts.isEmpty()) {
+////                ManageProducts.DeleteProduct(idSearch);
+//                clearProductInfo();
+//                sucessTemp.setText("Product Deleted Successfully");
+//                HideDeleteBlock.setVisible(false);
+//            } else {
+//                sucessTemp.setText("No Product Found");
+//            }
+//
+//        } catch (Exception e) {
+//            sucessTemp.setText("Can not Delete Product");
+//            clearProductInfo();
+//        }
+//    }
 
 }
