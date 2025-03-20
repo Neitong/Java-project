@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Admin/Control/Function/TestAmountProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/AdminInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/AddProduct/AddControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/SearchProduct/SearchControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/TestConnectionDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +67,7 @@
     "Application.SearchProduct.executor": "Run",
     "Application.SearchProducts.executor": "Run",
     "Application.SortProduct.executor": "Run",
+    "Application.TestAmountProduct.executor": "Run",
     "Application.TestConnectionDatabase.executor": "Run",
     "Application.TrackHistory.executor": "Run",
     "Application.UpdateProduct.executor": "Run",
@@ -205,6 +199,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestAmountProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Admin.Control.Function.TestAmountProduct" />
+      <module name="Java-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Admin.Control.Function.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestConnectionDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Admin.Control.TestConnectionDatabase" />
       <module name="Java-project" />
@@ -241,6 +248,7 @@
       <item itemvalue="Application.Products" />
       <item itemvalue="Application.Payments" />
       <item itemvalue="Application.SearchProduct" />
+      <item itemvalue="Application.TestAmountProduct" />
       <item itemvalue="Application.AdminInterface" />
       <item itemvalue="Application.TestConnectionDatabase" />
       <item itemvalue="Application.AddProduct" />
@@ -249,6 +257,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminInterface" />
+        <item itemvalue="Application.TestAmountProduct" />
         <item itemvalue="Application.AddProduct" />
         <item itemvalue="Application.UpdateProduct" />
         <item itemvalue="Application.TestConnectionDatabase" />
@@ -318,7 +327,11 @@
       <workItem from="1741247372926" duration="262000" />
       <workItem from="1741272349147" duration="6788000" />
       <workItem from="1741321878565" duration="3288000" />
-      <workItem from="1741361406316" duration="3897000" />
+      <workItem from="1741361406316" duration="5015000" />
+      <workItem from="1741612554822" duration="4895000" />
+      <workItem from="1741656242756" duration="5494000" />
+      <workItem from="1742200602151" duration="65000" />
+      <workItem from="1742475214391" duration="7150000" />
     </task>
     <servers />
   </component>

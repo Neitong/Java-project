@@ -20,7 +20,7 @@ public class TrackHistory {
              PreparedStatement statement = conn.prepareStatement(selectSQL);
              ResultSet result = statement.executeQuery()) {
 
-            if (!result.isBeforeFirst()) { // Check if there are no records
+            if (!result.isBeforeFirst()) {
                 System.out.println("No action history available.");
             } else {
                 while (result.next()) {
@@ -31,7 +31,7 @@ public class TrackHistory {
                     System.out.println("---------------------------------");
                     System.out.println("Product ID       : " + id);
                     System.out.println("Action Type      : " + action);
-                    System.out.println("Timestamp        : " + timestamp);
+                    System.out.println("Time             : " + timestamp);
                     System.out.println("---------------------------------");
                 }
             }

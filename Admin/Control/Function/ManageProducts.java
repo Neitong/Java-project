@@ -20,22 +20,25 @@ public class ManageProducts{
 
 
     public void AddProduct() {
+
         Scanner obj = new Scanner(System.in);
         String url = "jdbc:mysql://localhost:3306/OnlineShopping";
         String user = "root";
         String password = "";
         ArrayList<TemporaryStock> productsList = new ArrayList<>();
 
-
+        //Formula to insert data into database
         String insertProductQuery =
-                "INSERT INTO StockProduct (Product_ID, Product_Name, Product_Model, Product_Price, Product_Quantity, Product_Type, Product_Brand, Product_Color, Product_Warranty) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+             "insert into StockProduct (Product_ID, Product_Name, Product_Model," +
+             "Product_Price, Product_Quantity, Product_Type, Product_Brand, Product_Color, Product_Warranty) " +
+             "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        //Add History to history database when admin Make some changes
         String HistoryAdmin = "INSERT INTO AdminHistory (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try(Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement insertProductStatement = connection.prepareStatement(insertProductQuery);
-             PreparedStatement HistoryAdminStatement = connection.prepareStatement(HistoryAdmin)) {
+             PreparedStatement HistoryAdminStatement = connection.prepareStatement(HistoryAdmin)){
 
             while (true) {
                 TemporaryStock tempStock = new TemporaryStock();
@@ -78,12 +81,11 @@ public class ManageProducts{
                 System.out.print("Do you want to add another product? (Y|N): ");
                 char choice = obj.nextLine().charAt(0);
 
-                if (choice == 'N' || choice == 'n') {
+                if(choice == 'N' || choice == 'n'){
                     break;
                 }
             }
 
-            // After collecting all products, insert them into the database
             for (TemporaryStock tempStock : productsList) {
                 // Insert the product into the StockProduct table
                 insertProductStatement.setInt(1, tempStock.id);
@@ -96,20 +98,21 @@ public class ManageProducts{
                 insertProductStatement.setString(8, tempStock.ProductColor);
                 insertProductStatement.setInt(9, tempStock.warranty);
 
+                //It identified the row that have affected row in database
                 int rowsAffected = insertProductStatement.executeUpdate();
 
+                //Check it if affected
                 if (rowsAffected > 0) {
                     System.out.println("Product " + tempStock.id + " added successfully.");
 
-
+                    //Update the info into history database
                     HistoryAdminStatement.setInt(1, tempStock.id);
                     HistoryAdminStatement.setString(2, "ADD");
                     HistoryAdminStatement.executeUpdate();
                 } else {
-                    System.out.println("Product " + tempStock.id + " addition failed.");
+                    System.out.println("Add " + tempStock.id + " Product failed.");
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -124,13 +127,16 @@ public class ManageProducts{
 
         System.out.print("Enter product ID: ");
         int product_id = obj.nextInt();
-        obj.nextLine(); // Consume newline
+        obj.nextLine();
 
+        //used to search product
         String searchQuery = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+
+        //used to update products
         String updateQuery =
         "UPDATE StockProduct SET Product_Name = ?, Product_Model = ?, Product_Price = ?," +
         " Product_Quantity = ?, Product_Type = ?, Product_Brand = ?, Product_Color = ?, " +
-         "Product_Warranty = ? WHERE Product_ID = ?";
+        "Product_Warranty = ? WHERE Product_ID = ?";
 
         String AdminHistory = "INSERT INTO ProductAudit (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
@@ -189,13 +195,16 @@ public class ManageProducts{
                 updateStatement.setInt(9, product_id);
 
                 int rowsAffected = updateStatement.executeUpdate();
+
+
                 //If rowsAffected > 0, it means at least one row was updated
                 //If rowsAffected == 0, it means no rows were updated
+
                 if (rowsAffected > 0) {
                     System.out.println("Product updated successfully.");
 
                     AdminHistoryStatement.setInt(1, product_id);
-                    AdminHistoryStatement.setString(2, "UPDATE"); // Action type is "UPDATE"
+                    AdminHistoryStatement.setString(2, "UPDATE");// Set History type to Update
                     AdminHistoryStatement.executeUpdate();
                 } else {
                     System.out.println("Product update failed.");
@@ -203,7 +212,6 @@ public class ManageProducts{
             } else {
                 System.out.println("Product with ID " + product_id + " not found.");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -238,7 +246,7 @@ public class ManageProducts{
                 System.out.println("Product with ID " + product_id + " deleted successfully.");
 
                 AdminHistoryStatement.setInt(1, product_id);
-                AdminHistoryStatement.setString(2, "DELETE");
+                AdminHistoryStatement.setString(2, "DELETE"); //Set product type to delete
                 AdminHistoryStatement.executeUpdate();
             } else {
                 System.out.println("Product with ID " + product_id + " not found.");
@@ -248,7 +256,6 @@ public class ManageProducts{
             e.printStackTrace();
         }
     }
-
 
     public void SearchProduct() {
         Scanner obj = new Scanner(System.in);
@@ -269,7 +276,7 @@ public class ManageProducts{
              PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
 
             preparedStatement.setInt(1, product_id);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();// If it found
 
 
             while (resultSet.next()) {
@@ -312,37 +319,6 @@ public class ManageProducts{
             e.printStackTrace();
         }
     }
-
-
-    public void SortProduct(){
-        Scanner obj= new Scanner(System.in);
-        System.out.println("1. Sort Product by ID");
-        System.out.println("2. Sort Product by price");
-        System.out.println("3. Sort Product by Product Type");
-        System.out.println("4. Exit this block");
-        System.out.println("---------------------------------");
-        System.out.println("Enter a number");
-        int sort= obj.nextInt();
-        obj.nextLine();
-        switch (sort){
-            case 1:
-                SortByID();
-                break;
-            case 2:
-                SortByPrice();
-                break;
-            case 3:
-                SortByProductType();
-                break;
-            case 4:
-                System.out.println("Exit this Page");
-                System.exit(0);
-            default:
-                System.out.println("Invalid choice !!!");
-        }
-
-    }
-
 
     public void DisplayProduct() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
@@ -399,6 +375,35 @@ public class ManageProducts{
             System.out.println("Error retrieving products from the database.");
             e.printStackTrace();
         }
+    }
+
+    public void SortProduct(){
+        Scanner obj= new Scanner(System.in);
+        System.out.println("1. Sort Product by ID");
+        System.out.println("2. Sort Product by price");
+        System.out.println("3. Sort Product by Product Type");
+        System.out.println("4. Exit this block");
+        System.out.println("---------------------------------");
+        System.out.println("Enter a number");
+        int sort= obj.nextInt();
+        obj.nextLine();
+        switch (sort){
+            case 1:
+                SortByID();
+                break;
+            case 2:
+                SortByPrice();
+                break;
+            case 3:
+                SortByProductType();
+                break;
+            case 4:
+                System.out.println("Exit this Page");
+                System.exit(0);
+            default:
+                System.out.println("Invalid choice !!!");
+        }
+
     }
 
 
@@ -634,6 +639,8 @@ public class ManageProducts{
             default -> {
                 System.out.println("Invalid choice!");
                 yield null;
+//                yield null; means:
+//                The switch returns null if someValue does not match any cases.
             }
         };
 
@@ -709,9 +716,43 @@ public class ManageProducts{
         }
     }
 
+    public static void updateAmountProduct(int amount, int productID) {
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
 
-    public static void updateAmountProduct() {
+        String searchQuery = "SELECT Product_Quantity FROM StockProduct WHERE Product_ID = ?";
+        String updateQuery = "UPDATE StockProduct SET Product_Quantity = ? WHERE Product_ID = ?";
 
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement searchStatement = connection.prepareStatement(searchQuery);
+             PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+
+            searchStatement.setInt(1, productID);
+            ResultSet resultSet = searchStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int currentAmount = resultSet.getInt("Product_Quantity");
+                if (currentAmount >= amount) {
+                    int newAmount = currentAmount - amount;
+                    updateStatement.setInt(1, newAmount);
+                    updateStatement.setInt(2, productID);
+
+                    int rowsAffected = updateStatement.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("Purchase successful. Remaining stock: " + newAmount);
+                    } else {
+                        System.out.println("Update failed.");
+                    }
+                } else {
+                    System.out.println("Insufficient stock available.");
+                }
+            } else {
+                System.out.println("Product not found.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
