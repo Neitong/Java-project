@@ -134,4 +134,9 @@ public class ShoppingCart {
                 .sum();
         return subtotal - discountManager.calculateDiscount(subtotal);
     }
+
+    public boolean isEmpty() {
+        // Check if the cartItems map is empty
+        return cartItems == null || cartItems.isEmpty();
+    }
 }
