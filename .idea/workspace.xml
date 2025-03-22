@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Control/Function/TestAmountProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/ManageProducts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Control/Function/TrackHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Stock.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,57 +48,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.About.executor": "Run",
-    "Application.AddProduct.executor": "Run",
-    "Application.AdminInterface.executor": "Run",
-    "Application.DeleteProduct.executor": "Run",
-    "Application.DisplayProducts.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ManageProducts.executor": "Run",
-    "Application.Payments.executor": "Run",
-    "Application.Products.executor": "Run",
-    "Application.SearchProduct.executor": "Run",
-    "Application.SearchProducts.executor": "Run",
-    "Application.SortProduct.executor": "Run",
-    "Application.TestAmountProduct.executor": "Run",
-    "Application.TestConnectionDatabase.executor": "Run",
-    "Application.TrackHistory.executor": "Run",
-    "Application.UpdateProduct.executor": "Run",
-    "Application.test.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Admin",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DELL/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/IdeaProjects/Java-project/authentication/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.About.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AddProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AdminInterface.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DeleteProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DisplayProducts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ManageProducts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Payments.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SearchProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SearchProducts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SortProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestAmountProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestConnectionDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TrackHistory.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UpdateProduct.executor&quot;: &quot;Run&quot;,
+    &quot;Application.test.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Admin&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/Java-project/authentication/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\Picture" />
@@ -331,7 +327,8 @@
       <workItem from="1741612554822" duration="4895000" />
       <workItem from="1741656242756" duration="5494000" />
       <workItem from="1742200602151" duration="65000" />
-      <workItem from="1742475214391" duration="7150000" />
+      <workItem from="1742475214391" duration="7286000" />
+      <workItem from="1742484431295" duration="22000" />
     </task>
     <servers />
   </component>
