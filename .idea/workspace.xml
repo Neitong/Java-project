@@ -1,386 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8d7ce0a4-c73c-4a76-98c1-a27e0a67214a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addtocart/addtocart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java-project/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Function/TEMP" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/About/About.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/MainPage/Main.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/AddProduct/AddProduct.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DeleteProduct/DeleteProduct.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/DisplayProducts/DisplayProducts.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/SearchProduct/SearchProduct.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/SortProduct/SortProduct.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateProduct.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/Payments/Payments.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/Products/Products.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/GUI/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/0822-blog-key_stats_online_shopping-hero.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/Exit.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/adminPic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/online-shopping-ecommerce-ss-1920.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/online1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/online2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java-project/Admin/Control/Picture/userIcon.webp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="OpenRewrite Recipe" />
-        <option value="package.json" />
-        <option value="FxmlFile" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Neitong&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Neitong/Java-project.git&quot;,
-    &quot;accountId&quot;: &quot;ae79146e-eb02-4d7d-98a4-166c41926daa&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="2s7jxF7F8ubJMDpR4rzTZV9JrL0" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.About.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AddProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AdminInterface.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DeleteProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DisplayProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ManageProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Payments.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Products.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SearchProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SearchProducts.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SortProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestAmountProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestConnectionDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TrackHistory.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UpdateProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Application.test.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Admin&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/Downloads/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/Java-project/authentication/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ],
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Admin"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\Picture" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\About" />
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\Report" />
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\MainPage" />
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\SortProduct" />
-      <recent name="C:\Users\DELL\Desktop\Java-project\Admin\Control\GUI\SearchProduct" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.AdminInterface">
-    <configuration name="About" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.About.About" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AddProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.AddProduct.AddProduct" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.GUI.ManageProducts.AddProduct.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.Function.AdminInterface" />
-      <module name="Java-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.Function.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeleteProduct" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.DeleteProduct.DeleteProduct" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DisplayProducts" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.DisplayProducts.DisplayProducts" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.MainPage.Main" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Payments" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.Payments.Payments" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Products" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.Products.Products" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchProduct" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.SearchProduct.SearchProduct" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestAmountProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.Function.TestAmountProduct" />
-      <module name="Java-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.Function.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnectionDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.TestConnectionDatabase" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UpdateProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Admin.Control.GUI.ManageProducts.UpdateProduct.UpdateProduct" />
-      <module name="Java-project" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\DELL\Downloads\openjfx-23.0.2_windows-x64_bin-sdk\javafx-sdk-23.0.2\lib --add-modules javafx.controls,javafx.fxml " />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Admin.Control.GUI.ManageProducts.UpdateProduct.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.About" />
-      <item itemvalue="Application.DisplayProducts" />
-      <item itemvalue="Application.DeleteProduct" />
-      <item itemvalue="Application.Products" />
-      <item itemvalue="Application.Payments" />
-      <item itemvalue="Application.SearchProduct" />
-      <item itemvalue="Application.TestAmountProduct" />
-      <item itemvalue="Application.AdminInterface" />
-      <item itemvalue="Application.TestConnectionDatabase" />
-      <item itemvalue="Application.AddProduct" />
-      <item itemvalue="Application.UpdateProduct" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.AdminInterface" />
-        <item itemvalue="Application.TestAmountProduct" />
-        <item itemvalue="Application.AddProduct" />
-        <item itemvalue="Application.UpdateProduct" />
-        <item itemvalue="Application.TestConnectionDatabase" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+}]]></component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="56d7364f-9187-425d-b7cc-026de700d1ab" name="Changes" comment="" />
-      <created>1737813753337</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1737813753337</updated>
-      <workItem from="1737813754540" duration="1570000" />
-      <workItem from="1738346406087" duration="399000" />
-      <workItem from="1738346959122" duration="1896000" />
-      <workItem from="1739718216609" duration="1398000" />
-      <workItem from="1739720646837" duration="993000" />
-      <workItem from="1739722794354" duration="40000" />
-      <workItem from="1739772250463" duration="889000" />
-      <workItem from="1739774554939" duration="419000" />
-      <workItem from="1739775686777" duration="139000" />
-      <workItem from="1739799991116" duration="7834000" />
-      <workItem from="1739809154401" duration="4311000" />
-      <workItem from="1739840990105" duration="124000" />
-      <workItem from="1739841209090" duration="9085000" />
-      <workItem from="1739859553127" duration="5098000" />
-      <workItem from="1739890291526" duration="8939000" />
-      <workItem from="1739941571848" duration="1221000" />
-      <workItem from="1739944150352" duration="4040000" />
-      <workItem from="1740023736194" duration="2000" />
-      <workItem from="1740102979290" duration="5705000" />
-      <workItem from="1740152991296" duration="2651000" />
-      <workItem from="1740156486947" duration="3968000" />
-      <workItem from="1740240644926" duration="4121000" />
-      <workItem from="1740293775885" duration="8828000" />
-      <workItem from="1740325746343" duration="2649000" />
-      <workItem from="1740377183786" duration="143000" />
-      <workItem from="1740377507629" duration="199000" />
-      <workItem from="1740378832481" duration="414000" />
-      <workItem from="1740381624860" duration="107000" />
-      <workItem from="1740381751382" duration="82000" />
-      <workItem from="1740409368327" duration="2674000" />
-      <workItem from="1740414394379" duration="175000" />
-      <workItem from="1740414590083" duration="4403000" />
-      <workItem from="1740446968413" duration="6286000" />
-      <workItem from="1740554441972" duration="3395000" />
-      <workItem from="1740670021978" duration="4953000" />
-      <workItem from="1740723255604" duration="734000" />
-      <workItem from="1740753396547" duration="6684000" />
-      <workItem from="1740793568213" duration="1455000" />
-      <workItem from="1740796160981" duration="2434000" />
-      <workItem from="1740809939733" duration="1032000" />
-      <workItem from="1740839293227" duration="325000" />
-      <workItem from="1740896203498" duration="5828000" />
-      <workItem from="1740929941099" duration="4273000" />
-      <workItem from="1740971013435" duration="6943000" />
-      <workItem from="1741247372926" duration="262000" />
-      <workItem from="1741272349147" duration="6788000" />
-      <workItem from="1741321878565" duration="3288000" />
-      <workItem from="1741361406316" duration="5015000" />
-      <workItem from="1741612554822" duration="4895000" />
-      <workItem from="1741656242756" duration="5494000" />
-      <workItem from="1742200602151" duration="65000" />
-      <workItem from="1742475214391" duration="7286000" />
-      <workItem from="1742484431295" duration="22000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/src/Main.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/authentication/src/Main.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Admin/Control/GUI/ManageProducts/UpdateProduct/UpdateProduct.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
