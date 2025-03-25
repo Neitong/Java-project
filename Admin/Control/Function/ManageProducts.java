@@ -754,5 +754,141 @@ public class ManageProducts{
             e.printStackTrace();
         }
     }
+    public static void DisplayProductByProductID(int ProductID) {
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
+
+        String query = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+        ArrayList<StockProducts> productsList = new ArrayList<>(); // Declare productsList
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, ProductID);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    TemporaryStock tempStock = new TemporaryStock();
+
+                    tempStock.id = resultSet.getInt("Product_ID");
+                    tempStock.name = resultSet.getString("Product_Name");
+                    tempStock.model = resultSet.getString("Product_Model");
+                    tempStock.price = resultSet.getDouble("Product_Price");
+                    tempStock.quantity = resultSet.getInt("Product_Quantity");
+                    tempStock.productType = resultSet.getString("Product_Type");
+                    tempStock.brand = resultSet.getString("Product_Brand");
+                    tempStock.ProductColor = resultSet.getString("Product_Color");
+                    tempStock.warranty = resultSet.getInt("Product_Warranty");
+
+                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                            tempStock.quantity, tempStock.productType, tempStock.brand,
+                            tempStock.ProductColor, tempStock.warranty));
+                }
+
+                // Display the sorted product list
+                System.out.println("Product By ID");
+                for (StockProducts product : productsList) {
+                    System.out.println("---------------------------------");
+                    System.out.println("Product ID              : " + product.getId());
+                    System.out.println("Product Name            : " + product.getName());
+                    System.out.println("Product Model           : " + product.getModel());
+                    System.out.println("Product Price           : " + product.getPrice() + " $");
+                    System.out.println("Product Quantity        : " + product.getQuantity());
+                    System.out.println("Product Type            : " + product.getProductType());
+                    System.out.println("Product Brand           : " + product.getBrand());
+                    System.out.println("Product Color           : " + product.getProductColor());
+                    System.out.println("Product Warranty        : " + product.getWarranty() + "  Year");
+                    System.out.println("---------------------------------");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void DisplayProductByProductType(String productType) {
+        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String user = "root";
+        String password = "";
+
+        String query = "SELECT * FROM StockProduct WHERE Product_Type = ?";
+        ArrayList<StockProducts> productsList = new ArrayList<>(); // Declare productsList
+
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, productType);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    TemporaryStock tempStock = new TemporaryStock();
+
+                    tempStock.id = resultSet.getInt("Product_ID");
+                    tempStock.name = resultSet.getString("Product_Name");
+                    tempStock.model = resultSet.getString("Product_Model");
+                    tempStock.price = resultSet.getDouble("Product_Price");
+                    tempStock.quantity = resultSet.getInt("Product_Quantity");
+                    tempStock.productType = resultSet.getString("Product_Type");
+                    tempStock.brand = resultSet.getString("Product_Brand");
+                    tempStock.ProductColor = resultSet.getString("Product_Color");
+                    tempStock.warranty = resultSet.getInt("Product_Warranty");
+
+                    productsList.add(new StockProducts(tempStock.id, tempStock.name, tempStock.model, tempStock.price,
+                            tempStock.quantity, tempStock.productType, tempStock.brand,
+                            tempStock.ProductColor, tempStock.warranty));
+                }
+
+                // Display the sorted product list
+                System.out.println("Product By ID");
+                for (StockProducts product : productsList) {
+                    System.out.println("---------------------------------");
+                    System.out.println("Product ID              : " + product.getId());
+                    System.out.println("Product Name            : " + product.getName());
+                    System.out.println("Product Model           : " + product.getModel());
+                    System.out.println("Product Price           : " + product.getPrice() + " $");
+                    System.out.println("Product Quantity        : " + product.getQuantity());
+                    System.out.println("Product Type            : " + product.getProductType());
+                    System.out.println("Product Brand           : " + product.getBrand());
+                    System.out.println("Product Color           : " + product.getProductColor());
+                    System.out.println("Product Warranty        : " + product.getWarranty() + "  Year");
+                    System.out.println("---------------------------------");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

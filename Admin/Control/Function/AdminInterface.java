@@ -1,6 +1,7 @@
 package Admin.Control.Function;
 import java.util.Scanner;
 
+import static Admin.Control.Function.ManageProducts.DisplayProductByProductID;
 import static Admin.Control.Function.TrackHistory.getAllAdminActions;
 
 public class AdminInterface {
