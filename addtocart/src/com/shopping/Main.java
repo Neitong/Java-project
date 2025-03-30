@@ -1,6 +1,10 @@
 package com.shopping;
 
 import com.shopping.model.Product;
+import com.shopping.repository.ProductRepository;
+//import com.shopping.util.DatabaseConnection;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,30 +13,56 @@ public class Main {
     private static List<Product> productCatalog = new ArrayList<>();
     private static ShoppingCart cart = new ShoppingCart();
     private static Scanner scanner = new Scanner(System.in);
+    private static ProductRepository productRepository;
 
     public static void main(String[] args) {
-        initializeProducts();
-        showWelcomeMessage();
-        
-        boolean running = true;
-        while (running) {
-            displayMenu();
-            try {
-                int choice = getIntInput("Enter your choice: ");
-                running = processMenuChoice(choice);
-            } catch (Exception e) {
-                System.out.println("An error occurred: " + e.getMessage());
-                System.out.println("Please try again.");
+        try {
+            // Initialize database connection and repository
+            productRepository = new ProductRepository();
+            
+            // Load products from database instead of hardcoding
+            loadProductsFromDatabase();
+            
+            showWelcomeMessage();
+            
+            boolean running = true;
+            while (running) {
+                displayMenu();
+                try {
+                    int choice = getIntInput("Enter your choice: ");
+                    running = processMenuChoice(choice);
+                } catch (Exception e) {
+                    System.out.println("An error occurred: " + e.getMessage());
+                    System.out.println("Please try again.");
+                }
             }
+            
+            System.out.println("\nThank you for shopping with us! Goodbye!");
+            scanner.close();
+            
+            // Close the database connection when done
+            DatabaseConnection.closeConnection();
+            
+        } catch (SQLException e) {
+            System.err.println("Failed to connect to database: " + e.getMessage());
+            System.exit(1);
         }
-        
-        System.out.println("\nThank you for shopping with us! Goodbye!");
-        scanner.close();
+    }
+
+    private static void loadProductsFromDatabase() {
+        try {
+            productCatalog = productRepository.getAllProducts();
+            System.out.println("Successfully loaded " + productCatalog.size() + " products from database.");
+        } catch (SQLException e) {
+            System.err.println("Error loading products from database: " + e.getMessage());
+            // Fall back to sample products if database load fails
+            initializeProducts();
+        }
     }
 
     private static void showWelcomeMessage() {
         System.out.println("*********************************************");
-        System.out.println("*     WELCOME TO THE SHOPPING CART DEMO     *");
+        System.out.println("*     WELCOME TO THE SHOPPING CART      *");
         System.out.println("*********************************************");
         System.out.println("Today's date: " + java.time.LocalDate.now());
         System.out.println("We have " + productCatalog.size() + " products available.");
@@ -70,6 +100,10 @@ public class Main {
                     return false;
                 }
                 break;
+            case 10:
+                // Added new option to refresh product catalog from database
+                refreshProductCatalog();
+                break;
             default:
                 System.out.println("Invalid choice. Please try again.");
         }
@@ -87,9 +121,18 @@ public class Main {
         System.out.println("7. Checkout");
         System.out.println("8. View Cart History");
         System.out.println("9. Exit");
+        System.out.println("10. Refresh Product Catalog from Database");
     }
 
+    private static void refreshProductCatalog() {
+        System.out.println("Refreshing product catalog from database...");
+        loadProductsFromDatabase();
+        System.out.println("Product catalog refreshed successfully.");
+    }
+
+    // Backup method in case database connection fails
     private static void initializeProducts() {
+        System.out.println("Loading sample products...");
         // Add some sample products to the catalog
         productCatalog.add(new Product(1, "Laptop", "XPS13", 1299.99, "Electronics", 
                 "Dell", "Silver", 24, 10));
@@ -105,15 +148,16 @@ public class Main {
 
     private static void displayProductCatalog() {
         System.out.println("\n===== Product Catalog =====");
-        System.out.printf("%-5s %-15s %-15s %-10s %-10s %-15s%n", 
-                "ID", "Brand", "Name", "Price", "Stock", "Warranty(mo)");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.printf("%-5s %-15s %-20s %-15s %-10s %-10s %-15s%n", 
+                "ID", "Brand", "Name", "Model", "Price", "Stock", "Warranty(mo)");
+        System.out.println("------------------------------------------------------------------------------------");
         
         for (Product product : productCatalog) {
-            System.out.printf("%-5d %-15s %-15s $%-9.2f %-10d %-15d%n", 
+            System.out.printf("%-5d %-15s %-20s %-15s $%-9.2f %-10d %-15d%n", 
                     product.getId(), 
                     product.getBrand(), 
-                    product.getName(), 
+                    product.getName(),
+                    product.getModel(),
                     product.getPrice(), 
                     product.getStockQuantity(),
                     product.getWarranty());
@@ -123,13 +167,39 @@ public class Main {
     private static void addProductToCart() {
         displayProductCatalog();
         int productId = getIntInput("Enter product ID to add to cart: ");
-        Product product = findProductById(productId);
         
-        if (product != null) {
-            int quantity = getIntInput("Enter quantity: ");
-            cart.addToCart(product, quantity);
-        } else {
-            System.out.println("Product not found. Please try again.");
+        try {
+            // Get fresh product data from database
+            Product product = productRepository.getProductById(productId);
+            
+            if (product != null) {
+                int quantity = getIntInput("Enter quantity: ");
+                cart.addToCart(product, quantity);
+                
+                // Update local catalog with fresh data
+                updateLocalProductCatalog(product);
+            } else {
+                System.out.println("Product not found. Please try again.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            // Fall back to local product lookup
+            Product product = findProductById(productId);
+            if (product != null) {
+                int quantity = getIntInput("Enter quantity: ");
+                cart.addToCart(product, quantity);
+            } else {
+                System.out.println("Product not found. Please try again.");
+            }
+        }
+    }
+
+    private static void updateLocalProductCatalog(Product updatedProduct) {
+        for (int i = 0; i < productCatalog.size(); i++) {
+            if (productCatalog.get(i).getId() == updatedProduct.getId()) {
+                productCatalog.set(i, updatedProduct);
+                break;
+            }
         }
     }
 
@@ -167,6 +237,8 @@ public class Main {
         if (confirmed) {
             try {
                 cart.checkout();
+                // Refresh product catalog after checkout to reflect updated stock
+                refreshProductCatalog();
             } catch (Exception e) {
                 System.out.println("Checkout failed: " + e.getMessage());
                 System.out.println("Please try again or contact customer support.");
