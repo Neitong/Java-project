@@ -43,9 +43,8 @@ public class Main {
             // Close the database connection when done
             DatabaseConnection.closeConnection();
             
-        } catch (SQLException e) {
-            System.err.println("Failed to connect to database: " + e.getMessage());
-            System.exit(1);
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
         }
     }
 
@@ -228,7 +227,7 @@ public class Main {
         cart.applyDiscount(discount);
     }
 
-    private static void perform Checkout() {
+    private static void performCheckout() {
         if (cartIsEmpty()) return;
         
         System.out.println("\nPreparing to checkout...");
