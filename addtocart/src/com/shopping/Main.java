@@ -2,7 +2,7 @@ package com.shopping;
 
 import com.shopping.model.Product;
 import com.shopping.repository.ProductRepository;
-//import com.shopping.util.DatabaseConnection;
+import com.shopping.util.DatabaseConnection;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -228,7 +228,7 @@ public class Main {
         cart.applyDiscount(discount);
     }
 
-    private static void performCheckout() {
+    private static void perform Checkout() {
         if (cartIsEmpty()) return;
         
         System.out.println("\nPreparing to checkout...");
