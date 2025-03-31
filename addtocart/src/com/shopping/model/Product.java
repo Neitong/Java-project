@@ -1,4 +1,4 @@
-package com.shopping.model;
+package addtocart.src.com.shopping.model;
 
 public class Product {
     private int id;

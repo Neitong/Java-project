@@ -1,4 +1,4 @@
-package com.shopping;
+package addtocart.src.com.shopping;
 
 import com.shopping.model.Product;
 import com.shopping.repository.ProductRepository;

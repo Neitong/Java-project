@@ -1,4 +1,6 @@
-package com.shopping.model;
+package addtocart.src.com.shopping.model;
+
+import User.Product;
 
 import java.time.LocalDateTime;
 
