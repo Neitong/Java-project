@@ -15,7 +15,7 @@ public class AdminInterface {
 
         ManageProducts invoke= new ManageProducts();
 
-        System.out.println("\t\t\tWELCOME TO ADMIN BLOCK");
+        System.out.println("\t\t\tWELCOME TO ADMIN PAGE");
 
         while(true){
             System.out.println("-----------------------------");

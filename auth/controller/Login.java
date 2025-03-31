@@ -95,13 +95,13 @@ public class Login implements Authentication {
                             System.out.println("Redirecting to Admin Dashboard...");
                             Roles roleAdmin = Roles.ADMIN;
                             Admin admin = new Admin(usernameRetriveFromDatabase, emailRetriveFromDatabase, inputPassword, roleAdmin);
-                            admin.display();
+                            admin.adminDisplay();
 
-                        } else if (role.equalsIgnoreCase("ADMIN") && emailRetriveFromDatabase.equals("super.admin@admin.com")) {
+                        } else if (role.equalsIgnoreCase("SUPER-ADMIN")) {
                             System.out.println("Redirecting to Super Admin Dashboard...");
                             Roles roleAdmin = Roles.ADMIN;
                             Admin admin = new Admin(usernameRetriveFromDatabase, emailRetriveFromDatabase, inputPassword, roleAdmin);
-                            admin.display();
+                            admin.superAdminDisplay();
                         }else if(role.equalsIgnoreCase("USER")) {
                             System.out.println("Redirecting to User Dashboard...");
                             Roles roleUser = Roles.USER;

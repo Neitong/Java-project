@@ -18,15 +18,11 @@ public class Register implements Authentication {
 
     CheckUser check = new CheckUser();
 
-
-
-
     public static void performRegistration(Scanner scanner) {
         System.out.println("\n**** Registration ****");
 
         String username, email, password, confirmPassword, firstName, lastName, fullname;
         Roles role = Roles.USER; // Default role
-
 
         // Username validation
         while (true) {

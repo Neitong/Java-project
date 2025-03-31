@@ -4,6 +4,8 @@ import java.sql.*;
 import  java.util.Scanner;
 import java.util.ArrayList;
 
+import static java.lang.System.exit;
+
 public class ManageProducts{
 
     static class TemporaryStock{
@@ -22,14 +24,14 @@ public class ManageProducts{
     public void AddProduct() {
 
         Scanner obj = new Scanner(System.in);
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
         ArrayList<TemporaryStock> productsList = new ArrayList<>();
 
         //Formula to insert data into database
         String insertProductQuery =
-             "insert into StockProduct (Product_ID, Product_Name, Product_Model," +
+             "insert into Products (Product_ID, Product_Name, Product_Model," +
              "Product_Price, Product_Quantity, Product_Type, Product_Brand, Product_Color, Product_Warranty) " +
              "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -121,7 +123,7 @@ public class ManageProducts{
 
     public void UpdateProduct() {
         Scanner obj = new Scanner(System.in);
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
@@ -130,15 +132,15 @@ public class ManageProducts{
         obj.nextLine();
 
         //used to search product
-        String searchQuery = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+        String searchQuery = "SELECT * FROM Products WHERE Product_ID = ?";
 
         //used to update products
         String updateQuery =
-        "UPDATE StockProduct SET Product_Name = ?, Product_Model = ?, Product_Price = ?," +
+        "UPDATE Products SET Product_Name = ?, Product_Model = ?, Product_Price = ?," +
         " Product_Quantity = ?, Product_Type = ?, Product_Brand = ?, Product_Color = ?, " +
         "Product_Warranty = ? WHERE Product_ID = ?";
 
-        String AdminHistory = "INSERT INTO ProductAudit (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
+        String AdminHistory = "INSERT INTO AdminHistory (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement searchStatement = connection.prepareStatement(searchQuery);
@@ -220,7 +222,7 @@ public class ManageProducts{
 
     public void DeleteProduct() {
         Scanner obj = new Scanner(System.in);
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
@@ -228,7 +230,7 @@ public class ManageProducts{
         int product_id = obj.nextInt();
         obj.nextLine();
 
-        String deleteQuery = "DELETE FROM StockProduct WHERE Product_ID = ?";
+        String deleteQuery = "DELETE FROM Products WHERE Product_ID = ?";
         String AdminHistory = "INSERT INTO AdminHistory (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -259,7 +261,7 @@ public class ManageProducts{
 
     public void SearchProduct() {
         Scanner obj = new Scanner(System.in);
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
@@ -270,7 +272,7 @@ public class ManageProducts{
         obj.nextLine();
 
         //Formula to get product that match with id in databases
-        String searchQuery = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+        String searchQuery = "SELECT * FROM Products WHERE Product_ID = ?";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
@@ -322,11 +324,11 @@ public class ManageProducts{
 
     public void DisplayProduct() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String selectQuery = "SELECT * FROM StockProduct";
+        String selectQuery = "SELECT * FROM Products";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement();
@@ -384,7 +386,7 @@ public class ManageProducts{
         System.out.println("3. Sort Product by Product Type");
         System.out.println("4. Exit this block");
         System.out.println("---------------------------------");
-        System.out.println("Enter a number");
+        System.out.print("Enter a number");
         int sort= obj.nextInt();
         obj.nextLine();
         switch (sort){
@@ -399,7 +401,7 @@ public class ManageProducts{
                 break;
             case 4:
                 System.out.println("Exit this Page");
-                System.exit(0);
+                exit(0);
             default:
                 System.out.println("Invalid choice !!!");
         }
@@ -412,7 +414,7 @@ public class ManageProducts{
         int choice;
         System.out.println("1. Sort By Ascending");
         System.out.println("2. Sort By Descending");
-        System.out.println("Choose a number");
+        System.out.print("Choose a number");
         choice= obj.nextInt();
         obj.nextLine();
         switch (choice){
@@ -430,11 +432,11 @@ public class ManageProducts{
 
     public void Ascending() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String selectQuery = "SELECT * FROM StockProduct ORDER BY Product_Price ASC";
+        String selectQuery = "SELECT * FROM Products ORDER BY Product_Price ASC";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement();
@@ -489,11 +491,11 @@ public class ManageProducts{
 
     public void Descending() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String selectQuery = "SELECT * FROM StockProduct ORDER BY Product_Price DESC";
+        String selectQuery = "SELECT * FROM Products ORDER BY Product_Price DESC";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement();
@@ -547,11 +549,11 @@ public class ManageProducts{
 
     public void SortByID() {
         ArrayList<StockProducts> productsList = new ArrayList<>();
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String selectQuery = "select * from StockProduct order by Product_ID Asc";
+        String selectQuery = "select * from Products order by Product_ID Asc";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement();
@@ -621,7 +623,7 @@ public class ManageProducts{
         System.out.println("8 .  Sort By Keyboard");
         System.out.println("9 .  Sort By Mouse");
         System.out.println("10. Sort  By MousePad");
-        System.out.println("Choose a number : ");
+        System.out.print("Choose a number : ");
         choice = obj.nextInt();
         obj.nextLine();  // Consume newline
 
@@ -648,12 +650,12 @@ public class ManageProducts{
             return;
         }
 
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
         // Query to get products by product type
-        String query = "SELECT * FROM StockProduct WHERE Product_Type = ? ORDER BY Product_ID";
+        String query = "SELECT * FROM Products WHERE Product_Type = ? ORDER BY Product_ID";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -717,12 +719,12 @@ public class ManageProducts{
     }
 
     public static void updateAmountProduct(int amount, int productID) {
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String searchQuery = "SELECT Product_Quantity FROM StockProduct WHERE Product_ID = ?";
-        String updateQuery = "UPDATE StockProduct SET Product_Quantity = ? WHERE Product_ID = ?";
+        String searchQuery = "SELECT Product_Quantity FROM Products WHERE Product_ID = ?";
+        String updateQuery = "UPDATE Products SET Product_Quantity = ? WHERE Product_ID = ?";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement searchStatement = connection.prepareStatement(searchQuery);
@@ -759,7 +761,7 @@ public class ManageProducts{
         String user = "root";
         String password = "";
 
-        String query = "SELECT * FROM StockProduct WHERE Product_ID = ?";
+        String query = "SELECT * FROM Products WHERE Product_ID = ?";
         ArrayList<StockProducts> productsList = new ArrayList<>(); // Declare productsList
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -808,11 +810,11 @@ public class ManageProducts{
         }
     }
     public static void DisplayProductByProductType(String productType) {
-        String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+        String url = "jdbc:mysql://localhost:3306/Ecommerce";
         String user = "root";
         String password = "";
 
-        String query = "SELECT * FROM StockProduct WHERE Product_Type = ?";
+        String query = "SELECT * FROM Products WHERE Product_Type = ?";
         ArrayList<StockProducts> productsList = new ArrayList<>(); // Declare productsList
 
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -861,34 +863,3 @@ public class ManageProducts{
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

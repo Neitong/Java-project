@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class TrackHistory {
 
-    static String url = "jdbc:mysql://localhost:3306/OnlineShopping";
+    static String url = "jdbc:mysql://localhost:3306/Ecommerce";
     static String user = "root";
     static String password = "";
 
