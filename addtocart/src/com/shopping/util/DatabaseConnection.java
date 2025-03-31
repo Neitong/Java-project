@@ -1,4 +1,4 @@
-package com.shopping.util;
+package addtocart.src.com.shopping.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

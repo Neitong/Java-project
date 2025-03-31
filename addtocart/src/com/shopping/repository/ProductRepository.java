@@ -1,6 +1,6 @@
-//package com.shopping.repository;
+//package addtocart.src.com.shopping.repository;
 //
-//import com.shopping.model.Product;
+//import addtocart.src.com.shopping.entity.Product; // Fixed import for Product class
 //import com.shopping.util.DatabaseConnection;
 //
 //import java.sql.*;
@@ -11,8 +11,8 @@
 //
 //public class ProductRepository {
 //    private static final Logger LOGGER = Logger.getLogger(ProductRepository.class.getName());
-//    private static final String TABLE_NAME = "StockProduct";
-//    private static final String HISTORY_TABLE_NAME = "adminhistory";
+//    private static final String TABLE_NAME = "Products"; // Changed from "StockProduct" to match your schema
+//    private static final String HISTORY_TABLE_NAME = "AdminHistory"; // Changed to match your schema
 //
 //    public List<Product> getAllProducts() throws SQLException {
 //        List<Product> products = new ArrayList<>();
@@ -55,35 +55,35 @@
 //        return null;
 //    }
 //
-//    public void updateProductStock(int productId, int newQuantity) throws SQLException {
-//        String query = "UPDATE " + TABLE_NAME + " SET Product_Quantity = ? WHERE Product_ID = ?";
+//    public boolean updateProductStock(int productId, int quantityChange) throws SQLException {
+//        String query = "UPDATE " + TABLE_NAME + " SET Product_Quantity = Product_Quantity + ? WHERE Product_ID = ?";
 //
 //        try (Connection conn = DatabaseConnection.getConnection();
 //             PreparedStatement pstmt = conn.prepareStatement(query)) {
 //
-//            pstmt.setInt(1, newQuantity);
+//            pstmt.setInt(1, quantityChange);
 //            pstmt.setInt(2, productId);
 //
 //            int rowsAffected = pstmt.executeUpdate();
-//            if (rowsAffected == 0) {
-//                throw new SQLException("Failed to update product stock, no rows affected.");
-//            }
+//            return rowsAffected > 0;
 //        } catch (SQLException e) {
 //            LOGGER.log(Level.SEVERE, "Error updating product stock for Product ID: " + productId, e);
 //            throw e;
 //        }
 //    }
 //
-//    public void addProductHistoryEntry(int productId, String action) throws SQLException {
-//        String query = "INSERT INTO " + HISTORY_TABLE_NAME + " (product_id, action_type, action_date) VALUES (?, ?, NOW())";
+//    public boolean addProductHistoryEntry(int productId, String actionType) throws SQLException {
+//        String query = "INSERT INTO " + HISTORY_TABLE_NAME +
+//                " (ProductID, ActionType, ActionTimestamp) VALUES (?, ?, NOW())";
 //
 //        try (Connection conn = DatabaseConnection.getConnection();
 //             PreparedStatement pstmt = conn.prepareStatement(query)) {
 //
 //            pstmt.setInt(1, productId);
-//            pstmt.setString(2, action);
+//            pstmt.setString(2, actionType);
 //
-//            pstmt.executeUpdate();
+//            int rowsAffected = pstmt.executeUpdate();
+//            return rowsAffected > 0;
 //        } catch (SQLException e) {
 //            LOGGER.log(Level.SEVERE, "Error adding product history entry for Product ID: " + productId, e);
 //            throw e;
@@ -91,16 +91,39 @@
 //    }
 //
 //    private Product mapResultSetToProduct(ResultSet rs) throws SQLException {
-//        return new Product(
-//            rs.getInt("Product_ID"),
-//            rs.getString("Product_Name"),
-//            rs.getString("Product_Model"),
-//            rs.getDouble("Product_Price"),
-//            rs.getString("Product_Type"),
-//            rs.getString("Product_Brand"),
-//            rs.getString("Product_Color"),
-//            rs.getInt("Product_Warranty"),
-//            rs.getInt("Product_Quantity")
-//        );
+//        Product product = new Product();
+//        product.setId(rs.getInt("Product_ID"));
+//        product.setName(rs.getString("Product_Name"));
+//        product.setModel(rs.getString("Product_Model"));
+//        product.setPrice(rs.getDouble("Product_Price"));
+//        product.setType(rs.getString("Product_Type"));
+//        product.setBrand(rs.getString("Product_Brand"));
+//        product.setColor(rs.getString("Product_Color"));
+//        product.setWarranty(rs.getInt("Product_Warranty"));
+//        product.setQuantity(rs.getInt("Product_Quantity"));
+//        return product;
+//    }
+//
+//    // Additional useful methods
+//    public List<Product> getProductsByType(String productType) throws SQLException {
+//        List<Product> products = new ArrayList<>();
+//        String query = "SELECT * FROM " + TABLE_NAME + " WHERE Product_Type = ?";
+//
+//        try (Connection conn = DatabaseConnection.getConnection();
+//             PreparedStatement pstmt = conn.prepareStatement(query)) {
+//
+//            pstmt.setString(1, productType);
+//
+//            try (ResultSet rs = pstmt.executeQuery()) {
+//                while (rs.next()) {
+//                    products.add(mapResultSetToProduct(rs));
+//                }
+//            }
+//        } catch (SQLException e) {
+//            LOGGER.log(Level.SEVERE, "Error fetching products by type: " + productType, e);
+//            throw e;
+//        }
+//
+//        return products;
 //    }
 //}

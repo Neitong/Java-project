@@ -1,4 +1,4 @@
-package com.shopping.service;
+package addtocart.src.com.shopping.service;
 
 public class DiscountManager {
     private double discountPercent;

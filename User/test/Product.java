@@ -1,4 +1,4 @@
-package User;
+package User.test;
 
 public class Product {
     // Fields (attributes)
