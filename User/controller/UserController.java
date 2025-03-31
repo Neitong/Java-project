@@ -17,7 +17,7 @@ public class UserController {
         this.orderService = new OrderService();
     }
 
-    public void displayUserMenu(Scanner scanner, int userId) {
+    public void displayUserMenu(Scanner scanner, String Username) {
         while (true) {
             System.out.println("\n===== User Dashboard =====");
             System.out.println("1. Browse Products");
@@ -37,19 +37,19 @@ public class UserController {
                     userService.browseProducts();
                     break;
                 case 2:
-                    cartService.addProductToCart(scanner, userId);
+                    cartService.addProductToCart(scanner, Username);
                     break;
                 case 3:
-                    cartService.viewCart(userId);
+                    cartService.viewCart(Username);
                     break;
                 case 4:
-                    cartService.updateCart(scanner, userId);
+                    cartService.updateCart(scanner, Username);
                     break;
                 case 5:
-                    orderService.checkout(scanner, userId);
+                    orderService.checkout(scanner, Username);
                     break;
                 case 6:
-                    orderService.viewOrderHistory(userId);
+                    orderService.viewOrderHistory(Username);
                     break;
                 case 7:
                     System.out.println("Exiting User Dashboard...");

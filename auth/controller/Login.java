@@ -1,5 +1,6 @@
 package auth.controller;
 
+import User.controller.UserController;
 import auth.controller.role.Roles;
 import auth.controller.role.Admin;
 import auth.controller.role.User;
@@ -69,7 +70,7 @@ public class Login implements Authentication {
         System.out.print("Enter your password: ");
         String inputPassword = input.nextLine();
 
-        String query = "SELECT Username, Email, Password , Roles FROM Users WHERE Email = ? AND Password = ?";
+        String query = "SELECT User_ID, Username, Email, Password , Roles FROM Users WHERE Email = ? AND Password = ?";
 
         try {
             // Load MySQL JDBC Driver
@@ -106,7 +107,8 @@ public class Login implements Authentication {
                             System.out.println("Redirecting to User Dashboard...");
                             Roles roleUser = Roles.USER;
                             User user = new User(usernameRetriveFromDatabase, emailRetriveFromDatabase, inputPassword, roleUser);
-                            user.display();
+                            UserController userController = new UserController();
+                            userController.displayUserMenu(input, usernameRetriveFromDatabase);
                         }
                     } else {
                         System.out.println("Invalid credentials. Please try again.");

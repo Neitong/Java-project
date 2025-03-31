@@ -1,19 +1,20 @@
 package User.repository;
 
 import User.model.CartItem;
-import addtocart.src.com.shopping.util.DatabaseConnection;
+import User.model.Product;
+import User.utils.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartRepository {
-    public void addToCart(int userId, int productId, int quantity) {
-        String query = "INSERT INTO Cart (UserID, ProductID, Quantity) VALUES (?, ?, ?) " +
+    public void addToCart(String Username, int productId, int quantity) {
+        String query = "INSERT INTO Cart (Username, ProductID, Quantity) VALUES (?, ?, ?) " +
                        "ON DUPLICATE KEY UPDATE Quantity = Quantity + ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, userId);
+            statement.setString(1, Username);
             statement.setInt(2, productId);
             statement.setInt(3, quantity);
             statement.setInt(4, quantity);
@@ -23,15 +24,15 @@ public class CartRepository {
         }
     }
 
-    public List<CartItem> getCartItems(int userId) {
+    public List<CartItem> getCartItems(String Username) {
         List<CartItem> cartItems = new ArrayList<>();
         String query = "SELECT c.ProductID, c.Quantity, p.Product_Name, p.Product_Price " +
                        "FROM Cart c " +
                        "JOIN Products p ON c.ProductID = p.Product_ID " +
-                       "WHERE c.UserID = ?";
+                       "WHERE c.Username = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, userId);
+            statement.setString(1, Username);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -48,12 +49,12 @@ public class CartRepository {
         return cartItems;
     }
 
-    public void updateCartItem(int userId, int productId, int quantity) {
-        String query = "UPDATE Cart SET Quantity = ? WHERE UserID = ? AND ProductID = ?";
+    public void updateCartItem(String Username, int productId, int quantity) {
+        String query = "UPDATE Cart SET Quantity = ? WHERE Username = ? AND ProductID = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, quantity);
-            statement.setInt(2, userId);
+            statement.setString(2, Username);
             statement.setInt(3, productId);
             statement.executeUpdate();
         } catch (SQLException e) {

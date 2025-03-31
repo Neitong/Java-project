@@ -11,28 +11,28 @@ public class CartService {
         this.cartRepository = new CartRepository();
     }
 
-    public void addProductToCart(Scanner scanner, int userId) {
+    public void addProductToCart(Scanner scanner, String Username) {
         System.out.print("Enter Product ID: ");
         int productId = scanner.nextInt();
         System.out.print("Enter Quantity: ");
         int quantity = scanner.nextInt();
 
-        cartRepository.addToCart(userId, productId, quantity);
+        cartRepository.addToCart(Username, productId, quantity);
         System.out.println("Product added to cart successfully.");
     }
 
-    public void viewCart(int userId) {
+    public void viewCart(String username) {
         System.out.println("\n===== Your Cart =====");
-        cartRepository.getCartItems(userId).forEach(System.out::println);
+        cartRepository.getCartItems(username).forEach(System.out::println);
     }
 
-    public void updateCart(Scanner scanner, int userId) {
+    public void updateCart(Scanner scanner, String Username) {
         System.out.print("Enter Product ID to update: ");
         int productId = scanner.nextInt();
         System.out.print("Enter new Quantity: ");
         int quantity = scanner.nextInt();
 
-        cartRepository.updateCartItem(userId, productId, quantity);
+        cartRepository.updateCartItem(Username, productId, quantity);
         System.out.println("Cart updated successfully.");
     }
 }

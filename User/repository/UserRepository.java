@@ -1,16 +1,35 @@
 package User.repository;
 
-import User.Product;
+import User.model.Product;
+import User.utils.DatabaseConnection;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
     public List<Product> getAllProducts() {
-        // Fetch products from the database
-        // Example: SELECT * FROM Products
-        return List.of(
-            new Product("Laptop", 1200.0, "High-performance laptop", "Electronics", "laptop.jpg"),
-            new Product("Smartphone", 800.0, "Latest smartphone", "Electronics", "smartphone.jpg")
-        );
+        List<Product> products = new ArrayList<>();
+
+        String query = "SELECT * FROM Products";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("Product_ID");
+                String name = resultSet.getString("Product_Name");
+                double price = resultSet.getDouble("Product_Price");
+                String description = ""; // You can add more columns if needed
+                String category = resultSet.getString("Product_Type");
+                String imageUrl = ""; // Add image if you have it in database
+
+                products.add(new Product(productId, name, price, description, category, imageUrl));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching products: " + e.getMessage());
+        }
+
+        return products;
     }
 }

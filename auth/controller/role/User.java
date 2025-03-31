@@ -1,6 +1,9 @@
 package auth.controller.role;
 
+import User.controller.UserController;
 import auth.controller.Authentication;
+
+import java.util.Scanner;
 
 
 public class User {
@@ -51,5 +54,6 @@ public class User {
 
     public void display() {
         System.out.println("User Dashboard for " + getUsername());
+
     }
 }
