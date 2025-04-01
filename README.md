@@ -17,6 +17,8 @@ This is a **Java-based Online Shopping Platform** that allows users to browse pr
 - **JDBC (Future Implementation)**
 
 ## Team Assignments
+- **@Neitong** Implement on Authentication including create accounts for User and also Admin.
+- **@RaFat** Build admin interface and implements functionality of admin such as CRUD products, Track admin activity histories... 
 - **@Seng:** Implement product storage and browsing functionality.
 - **@araeht:** Develop the add-to-cart and checkout functionality.
 
