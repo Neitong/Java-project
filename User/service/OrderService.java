@@ -12,7 +12,9 @@ public class OrderService {
     }
 
     public void checkout(Scanner scanner, String Username) {
-        System.out.println("\n===== Checkout =====");
+        System.out.println("\n===================================");
+        System.out.println("             CHECKOUT");
+        System.out.println("===================================");
         double total = orderRepository.calculateTotal(Username);
         System.out.printf("Total Amount: $%.2f%n", total);
 
@@ -28,7 +30,10 @@ public class OrderService {
     }
 
     public void viewOrderHistory(String Username) {
-        System.out.println("\n===== Order History =====");
+        System.out.println("\n===================================");
+        System.out.println("         ORDER HISTORY");
+        System.out.println("===================================");
         orderRepository.getOrderHistory(Username).forEach(System.out::println);
+        System.out.println("===================================");
     }
 }

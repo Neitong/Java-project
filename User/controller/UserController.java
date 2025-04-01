@@ -19,7 +19,9 @@ public class UserController {
 
     public void displayUserMenu(Scanner scanner, String Username) {
         while (true) {
-            System.out.println("\n===== User Dashboard =====");
+            System.out.println("\n===================================");
+            System.out.println("         USER DASHBOARD");
+            System.out.println("===================================");
             System.out.println("1. Browse Products");
             System.out.println("2. Add Product to Cart");
             System.out.println("3. View Cart");
@@ -27,10 +29,10 @@ public class UserController {
             System.out.println("5. Checkout");
             System.out.println("6. View Order History");
             System.out.println("7. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("===================================");
+            System.out.print("Enter your choice (1-7): ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            int choice = getValidatedChoice(scanner, 1, 7);
 
             switch (choice) {
                 case 1:
@@ -56,6 +58,20 @@ public class UserController {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
+    private int getValidatedChoice(Scanner scanner, int min, int max) {
+        while (true) {
+            try {
+                int choice = Integer.parseInt(scanner.nextLine());
+                if (choice >= min && choice <= max) {
+                    return choice;
+                }
+                System.out.printf("Please enter a number between %d and %d.%n", min, max);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
             }
         }
     }

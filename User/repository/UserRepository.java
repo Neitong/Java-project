@@ -1,11 +1,14 @@
 package User.repository;
 
-import User.model.Product;
-import User.utils.DatabaseConnection;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import User.model.Product;
+import User.utils.DatabaseConnection;
 
 public class UserRepository {
     public List<Product> getAllProducts() {
@@ -22,6 +25,7 @@ public class UserRepository {
                 double price = resultSet.getDouble("Product_Price");
                 String description = ""; // You can add more columns if needed
                 String category = resultSet.getString("Product_Type");
+                
                 String imageUrl = ""; // Add image if you have it in database
 
                 products.add(new Product(productId, name, price, description, category, imageUrl));
