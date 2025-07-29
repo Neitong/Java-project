@@ -13,7 +13,23 @@ public class CheckUser implements Authentication{
     private static final String DB_PASSWORD = "";
 
     public static boolean checkIfExists(String column, String value) throws SQLException {
-        String query = String.format("SELECT 1 FROM Users WHERE %s = ?", column);
+        // Validate column name to prevent SQL injection
+        String validatedColumn;
+        switch (column.toLowerCase()) {
+            case "username":
+                validatedColumn = "Username";
+                break;
+            case "email":
+                validatedColumn = "Email";
+                break;
+            case "user_id":
+                validatedColumn = "User_ID";
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid column name: " + column);
+        }
+        
+        String query = "SELECT 1 FROM Users WHERE " + validatedColumn + " = ?";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement statement = connection.prepareStatement(query)) {
