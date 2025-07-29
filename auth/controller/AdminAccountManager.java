@@ -75,7 +75,7 @@ public class AdminAccountManager {
 
             statement.setString(1, username);
             statement.setString(2, email);
-            statement.setString(3, password);
+            statement.setString(3, PasswordUtil.hashPassword(password));
             statement.setString(4, firstName);
             statement.setString(5, lastName);
 
@@ -215,7 +215,7 @@ public class AdminAccountManager {
             try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
                 updateStmt.setString(1, newUsername);
                 updateStmt.setString(2, newEmail);
-                updateStmt.setString(3, newPassword);
+                updateStmt.setString(3, newPassword.isEmpty() ? "" : PasswordUtil.hashPassword(newPassword));
                 updateStmt.setString(4, newFirstName);
                 updateStmt.setString(5, newLastName);
                 updateStmt.setString(6, adminId);

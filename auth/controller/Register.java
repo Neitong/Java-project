@@ -120,7 +120,7 @@ public class Register implements Authentication {
 
                 statement.setString(1, username);
                 statement.setString(2, email);
-                statement.setString(3, password);
+                statement.setString(3, PasswordUtil.hashPassword(password));
                 statement.setString(4, role.toString());
                 statement.setString(5, firstName);
                 statement.setString(6, lastName);

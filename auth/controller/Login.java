@@ -70,7 +70,7 @@ public class Login implements Authentication {
         System.out.print("Enter your password: ");
         String inputPassword = input.nextLine();
 
-        String query = "SELECT User_ID, Username, Email, Password , Roles FROM Users WHERE Email = ? AND Password = ?";
+        String query = "SELECT User_ID, Username, Email, Password , Roles FROM Users WHERE Email = ?";
 
         try {
             // Load MySQL JDBC Driver
@@ -80,10 +80,16 @@ public class Login implements Authentication {
                  PreparedStatement statement = connection.prepareStatement(query)) {
 
                 statement.setString(1, inputEmail);
-                statement.setString(2, inputPassword);
 
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
+                        String storedPassword = resultSet.getString("Password");
+                        
+                        // Verify password using secure hashing
+                        if (!PasswordUtil.verifyPassword(inputPassword, storedPassword)) {
+                            System.out.println("Invalid credentials. Please try again.");
+                            return;
+                        }
                         String usernameRetriveFromDatabase = resultSet.getString("Username");
                         String emailRetriveFromDatabase = resultSet.getString("Email");
                         String role = resultSet.getString("Roles");
